@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="description" content="技以安身 德以立命">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    iOS马甲包制作流程 |
+    
+    Hank博客</title>
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hank博客" type="application/atom+xml">
+</head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-iOS马甲包制作流程" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+
+<h1 class="article-title" itemprop="name">
+  iOS马甲包制作流程
+</h1>
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/15/iOS%E9%A9%AC%E7%94%B2%E5%8C%85%E5%88%B6%E4%BD%9C%E6%B5%81%E7%A8%8B/" class="article-date">
+  <time datetime="2020-05-15T08:18:30.000Z" itemprop="datePublished">2020-05-15</time>
+</a>
+      
+<div class="article-category">
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+</div>
+
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        
+        
+          <p>iOS马甲包制作流程</p>
+<h1 id="修改项目"><a href="#修改项目" class="headerlink" title="修改项目"></a>修改项目</h1><ul>
+<li>1.直接点击工程名，敲Enter，如图，输入新工程名，再敲Enter，会有一个弹框点Rename<br><img src="http://hank.image.alimmdn.com/blog/5710765-7da5740dd22cb908.png" alt="image"><br><img src="http://hank.image.alimmdn.com/blog/5710765-8893dfb065e59638.png" alt="image"></li>
+<li>选电脑状态栏 Product-&gt;Scheme-&gt;Edit Scheme-&gt;Manage Scheme<br><img src="http://hank.image.alimmdn.com/blog/5710765-21b001f5377d82a1.png" alt="image"></li>
+<li>选择跟文件夹，敲回车，输入新工程名，敲回车<br><img src="http://hank.image.alimmdn.com/blog/5710765-cccd8c551a0133dd.png" alt="image"></li>
+<li>选择电脑状态栏Find-&gt;Find and Replace in Workspace 选择Replace，第一个输入框输入旧工程名，敲回车，下面的输入框输入新工程名，点Replace All。<br><img src="http://hank.image.alimmdn.com/blog/5710765-c361da721fe07580.png" alt="image"></li>
+<li>PROJECT-&gt;Build Setting-&gt;Info.plist File，旧名字(TaoBao/Info.plist)，改为新名字（JingDong/Info.plist）</li>
+<li>修改最外层文件夹名字。敲回车修改，子文件夹的不需要动<img src="http://hank.image.alimmdn.com/blog/5710765-de23e9d1dfb21a40.png" alt="image"></li>
+<li>点击TaoBao.xcodeproj 选显示包内容，双击打开project.pbxproj<br><img src="http://hank.image.alimmdn.com/blog/5710765-adc925a98e0dc2ac.png" alt="image"></li>
+<li>如果使用cocopods管理第三方，应当删除与之相关的那三项<br><img src="http://hank.image.alimmdn.com/blog/5710765-6412458a02c2619d.png" alt="image"></li>
+<li>打开命令行重新执行：pod install (注意 不要用 pod install –verbose –no-repo-update )。</li>
+</ul>
+<h1 id="修改项目文件前缀"><a href="#修改项目文件前缀" class="headerlink" title="修改项目文件前缀"></a>修改项目文件前缀</h1><h3 id="修改文件执行-python-py"><a href="#修改文件执行-python-py" class="headerlink" title="修改文件执行 python *.py"></a>修改文件执行 python *.py</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;env python3</span><br><span class="line"># -*- coding: utf-8 -*</span><br><span class="line">import os</span><br><span class="line">#需要修改的类名前缀 （需替换）</span><br><span class="line">pre_str &#x3D; &#39;taobao&#39;</span><br><span class="line"># 新的类名前缀 （需替换）</span><br><span class="line">pre_to_str &#x3D; &#39;jindong&#39;</span><br><span class="line"></span><br><span class="line">header 1 | header 2</span><br><span class="line">---|---</span><br><span class="line">row 1 col 1 | row 1 col 2</span><br><span class="line">row 2 col 1 | row 2 col 2</span><br><span class="line"></span><br><span class="line"># 搜寻以下文件类型 （根据自己需求替换）</span><br><span class="line">suf_set &#x3D; (&#39;.h&#39;, &#39;.m&#39;, &#39;.xib&#39;, &#39;.storyboard&#39;, &#39;.mm&#39;)</span><br><span class="line"># 项目路径   （找到自己的项目路径）</span><br><span class="line">project_path &#x3D; &#39;&#x2F;Users&#x2F;hank&#x2F;Desktop&#x2F;xykgj-ios&#x2F;MMXYKGJ&#39;</span><br><span class="line"># 项目project.pbxproj文件路径 需要更新配置文件中的类名 （找到自己的项目project.pbxproj路径）</span><br><span class="line">pbxpro_path &#x3D; &#39;&#x2F;Users&#x2F;hank&#x2F;Desktop&#x2F;xykgj-ios&#x2F;MMXYKGJ.xcodeproj&#x2F;project.pbxproj&#39;</span><br><span class="line"></span><br><span class="line">#文件重命名函数，返回新的文件名</span><br><span class="line">def file_rename(file_path):</span><br><span class="line">    root_path &#x3D; os.path.split(file_path)[0]     # 文件目录</span><br><span class="line">    root_name &#x3D; os.path.split(file_path)[1]     # 文件名包含扩展名</span><br><span class="line">    filename &#x3D; os.path.splitext(root_name)[0];  # 文件名</span><br><span class="line">    filetype &#x3D; os.path.splitext(root_name)[1];  # 文件扩展名</span><br><span class="line">    </span><br><span class="line">    new_path &#x3D; os.path.join(root_path, filename.replace(pre_str, pre_to_str) + filetype)    # 拼接新路径</span><br><span class="line">    os.renames(file_path, new_path)             # 文件重命名</span><br><span class="line">    return filename.replace(pre_str, pre_to_str)</span><br><span class="line"></span><br><span class="line"># 定义一个字典 key&#x3D;旧类名 value&#x3D;新类名</span><br><span class="line">needModifyDic &#x3D; &#123;&#125;</span><br><span class="line"></span><br><span class="line"># 遍历文件，符合规则的进行重命名</span><br><span class="line">for (root, dirs, files) in os.walk(project_path):</span><br><span class="line">    for file_name in files:</span><br><span class="line">        if file_name.startswith((pre_str,)) and file_name.endswith(suf_set):</span><br><span class="line">            old_name &#x3D; os.path.splitext(file_name)[0]</span><br><span class="line">            new_name &#x3D; file_rename(os.path.join(root, file_name))</span><br><span class="line">            needModifyDic[old_name] &#x3D; new_name</span><br><span class="line"></span><br><span class="line"># 遍历文件，在文件中更换新类名的引用</span><br><span class="line">print(needModifyDic)</span><br><span class="line">for (root, dirs, files) in os.walk(project_path):</span><br><span class="line">    for file_name in files:</span><br><span class="line">        if file_name.endswith(suf_set):</span><br><span class="line">            print(&#39;-----fileName-------&#39; + file_name)</span><br><span class="line">            with open(os.path.join(root, file_name), &#39;r+&#39;) as f:</span><br><span class="line">                print(&#39;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;fileName&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#39; + file_name)</span><br><span class="line">                s0 &#x3D; f.read()</span><br><span class="line">                f.close()</span><br><span class="line">                for key in needModifyDic:</span><br><span class="line">                    if key in s0:</span><br><span class="line">                        with open(os.path.join(root, file_name), &#39;r+&#39;) as f4:</span><br><span class="line">                            s1 &#x3D; f4.read().replace(key, needModifyDic[key])</span><br><span class="line">                            print(key + &#39; ------&gt; &#39; + needModifyDic[key])</span><br><span class="line">                            f4.seek(0)</span><br><span class="line">                            f4.write(s1)</span><br><span class="line">                            f4.truncate()</span><br><span class="line">                            f4.close()</span><br><span class="line"># 替换配置文件中的类名</span><br><span class="line">for key in needModifyDic:</span><br><span class="line">    with open(pbxpro_path, &#39;r+&#39;) as f:</span><br><span class="line">        s0 &#x3D; f.read()</span><br><span class="line">        f.close()</span><br><span class="line">        if key in s0:</span><br><span class="line">            with open(pbxpro_path, &#39;r+&#39;) as f2:</span><br><span class="line">                s &#x3D; f2.read().replace(key, needModifyDic[key])</span><br><span class="line">                f2.seek(0)</span><br><span class="line">                f2.write(s)</span><br><span class="line">                f2.truncate()</span><br><span class="line">                f2.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="给本地图片添加MD5-python3"><a href="#给本地图片添加MD5-python3" class="headerlink" title="给本地图片添加MD5(python3)"></a>给本地图片添加MD5(python3)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">import hashlib</span><br><span class="line">import os</span><br><span class="line"># 获取MD5</span><br><span class="line">def GetFileMd5(filename):</span><br><span class="line">    if not os.path.isfile(filename):</span><br><span class="line">        return</span><br><span class="line">    myhash &#x3D; hashlib.md5()</span><br><span class="line">    f &#x3D; open(filename,&#39;rb&#39;)</span><br><span class="line">    while True:</span><br><span class="line">        b &#x3D; f.read(8096)</span><br><span class="line">        if not b :</span><br><span class="line">            break</span><br><span class="line">        myhash.update(b)</span><br><span class="line">    f.close()</span><br><span class="line">    return myhash.hexdigest()</span><br><span class="line"># 给文件添加末尾，改变md5</span><br><span class="line">def fileAppend(filename):</span><br><span class="line">    myfile &#x3D; open(filename,&#39;a&#39;)</span><br><span class="line">    # 添加一个自定义内容，并不影响文件</span><br><span class="line">    myfile.write(&quot;jneth&quot;)</span><br><span class="line">    myfile.close</span><br><span class="line"># 设置以这些结尾的</span><br><span class="line">suf_set &#x3D; (&#39;.png&#39;, &#39;.jpg&#39;)</span><br><span class="line">#project_path &#x3D; &#39;&#x2F;Users&#x2F;hyjt&#x2F;Desktop&#x2F;****&#x2F;qiyuan-ios&#x2F;car&#x2F;car&#x2F;&#39;</span><br><span class="line">project_path &#x3D; &#39;&#x2F;Users&#x2F;maimang&#x2F;Desktop&#x2F;项目&#x2F;zbyq-ios&#39;</span><br><span class="line"></span><br><span class="line"># 遍历文件，符合规则的进行重命名</span><br><span class="line"># 项目路径   （找到自己的项目路径）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for (root, dirs, files) in os.walk(project_path):</span><br><span class="line">    for file_name in files:</span><br><span class="line">        if file_name.endswith(suf_set):</span><br><span class="line">            short_name &#x3D; os.path.splitext(file_name)[0]</span><br><span class="line">            realpath &#x3D; os.path.join(root, file_name)</span><br><span class="line">            print(short_name + &#39; &#x3D;&#x3D;&gt; &#39; + realpath)</span><br><span class="line">            oldMd5 &#x3D; GetFileMd5(realpath)</span><br><span class="line">            fileAppend(realpath)</span><br><span class="line">            newMd5 &#x3D; GetFileMd5(realpath)</span><br><span class="line">            print(oldMd5 + &#39;--&gt;&#39; + newMd5)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="修改文件的xcodeproj"><a href="#修改文件的xcodeproj" class="headerlink" title="修改文件的xcodeproj"></a>修改文件的xcodeproj</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PythonToolBox</span><br><span class="line">https:&#x2F;&#x2F;github.com&#x2F;iOSCoda&#x2F;PythonToolBox</span><br></pre></td></tr></table></figure>
+
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/05/15/iOS%E9%A9%AC%E7%94%B2%E5%8C%85%E5%88%B6%E4%BD%9C%E6%B5%81%E7%A8%8B/" data-id="cko8q7bde00102eqx9h7hhcas" class="article-share-link">
+        Share
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  <a href="/2020/05/15/flutter%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="article-nav-link">
+    <strong class="article-nav-caption">Newer</strong>
+    <div class="article-nav-title">
+      
+      flutter基础知识
+      
+    </div>
+  </a>
+  
+  
+  <a href="/2020/04/03/flutter%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="article-nav-link">
+    <strong class="article-nav-caption">Older</strong>
+    <div class="article-nav-title">flutter环境搭建</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>Hank博客 &copy; 2021</li>
+      
+        <li></li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="Hank博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">相册</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/copybtn.js"></script>
+
+
+
+
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="description" content="技以安身 德以立命">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    iOS提升点 |
+    
+    Hank博客</title>
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hank博客" type="application/atom+xml">
+</head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-iOS提升点" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+
+<h1 class="article-title" itemprop="name">
+  iOS提升点
+</h1>
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/07/15/iOS%E6%8F%90%E5%8D%87%E7%82%B9/" class="article-date">
+  <time datetime="2018-07-15T14:18:30.000Z" itemprop="datePublished">2018-07-15</time>
+</a>
+      
+<div class="article-category">
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+</div>
+
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        
+        
+          <p>iOS一些有趣的东西</p>
+<h2 id="UI相关"><a href="#UI相关" class="headerlink" title="UI相关"></a>UI相关</h2><h3 id="UITableView"><a href="#UITableView" class="headerlink" title="UITableView"></a>UITableView</h3><ul>
+<li>复用机制原理:一个列表中,有一部分显示在屏幕之中的cell 会放在一个已使用的池中,当滑动tableview的时候,首先会到待使用的池中去拿有没有可以复用的cell,如果没有就创建,有就从池中拿出来复用,一般池中的cell数量是屏幕最多能显示cell的数量<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#x2F;&#x2F;ViewReusePool</span><br><span class="line">#import &lt;Foundation&#x2F;Foundation.h&gt;</span><br><span class="line">#import &lt;UIKit&#x2F;UIKit.h&gt;</span><br><span class="line">&#x2F;&#x2F; 实现重用机制的类</span><br><span class="line">@interface ViewReusePool : NSObject</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 从重用池当中取出一个可重用的view</span><br><span class="line">- (UIView *)dequeueReusableView;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 向重用池当中添加一个视图</span><br><span class="line">- (void)addUsingView:(UIView *)view;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 重置方法，将当前使用中的视图移动到可重用队列当中</span><br><span class="line">- (void)reset;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#import &quot;ViewReusePool.h&quot;</span><br><span class="line"></span><br><span class="line">@interface ViewReusePool ()</span><br><span class="line">&#x2F;&#x2F; 等待使用的队列</span><br><span class="line">@property (nonatomic, strong) NSMutableSet *waitUsedQueue;</span><br><span class="line">&#x2F;&#x2F; 使用中的队列</span><br><span class="line">@property (nonatomic, strong) NSMutableSet *usingQueue;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation ViewReusePool</span><br><span class="line"></span><br><span class="line">- (id)init&#123;</span><br><span class="line">    self &#x3D; [super init];</span><br><span class="line">    if (self) &#123;</span><br><span class="line">        _waitUsedQueue &#x3D; [NSMutableSet set];</span><br><span class="line">        _usingQueue &#x3D; [NSMutableSet set];</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (UIView *)dequeueReusableView&#123;</span><br><span class="line">    UIView *view &#x3D; [_waitUsedQueue anyObject];</span><br><span class="line">    if (view &#x3D;&#x3D; nil) &#123;</span><br><span class="line">        return nil;</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        &#x2F;&#x2F; 进行队列移动</span><br><span class="line">        [_waitUsedQueue removeObject:view];</span><br><span class="line">        [_usingQueue addObject:view];</span><br><span class="line">        return view;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)addUsingView:(UIView *)view</span><br><span class="line">&#123;</span><br><span class="line">    if (view &#x3D;&#x3D; nil) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 添加视图到使用中的队列</span><br><span class="line">    [_usingQueue addObject:view];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)reset&#123;</span><br><span class="line">    UIView *view &#x3D; nil;</span><br><span class="line">    while ((view &#x3D; [_usingQueue anyObject])) &#123;</span><br><span class="line">        &#x2F;&#x2F; 从使用中队列移除</span><br><span class="line">        [_usingQueue removeObject:view];</span><br><span class="line">        &#x2F;&#x2F; 加入等待使用的队列</span><br><span class="line">        [_waitUsedQueue addObject:view];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#import &lt;UIKit&#x2F;UIKit.h&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@protocol IndexedTableViewDataSource &lt;NSObject&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 获取一个tableview的字母索引条数据的方法</span><br><span class="line">- (NSArray &lt;NSString *&gt; *)indexTitlesForIndexTableView:(UITableView *)tableView;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@interface IndexedTableView : UITableView</span><br><span class="line">@property (nonatomic, weak) id &lt;IndexedTableViewDataSource&gt; indexedDataSource;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#import &quot;IndexedTableView.h&quot;</span><br><span class="line">#import &quot;ViewReusePool.h&quot;</span><br><span class="line">@interface IndexedTableView ()</span><br><span class="line">&#123;</span><br><span class="line">    UIView *containerView;</span><br><span class="line">    ViewReusePool *reusePool;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation IndexedTableView</span><br><span class="line"></span><br><span class="line">- (void)reloadData&#123;</span><br><span class="line">    [super reloadData];</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 懒加载</span><br><span class="line">    if (containerView &#x3D;&#x3D; nil) &#123;</span><br><span class="line">        containerView &#x3D; [[UIView alloc] initWithFrame:CGRectZero];</span><br><span class="line">        containerView.backgroundColor &#x3D; [UIColor whiteColor];</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F;避免索引条随着table滚动</span><br><span class="line">        [self.superview insertSubview:containerView aboveSubview:self];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    if (reusePool &#x3D;&#x3D; nil) &#123;</span><br><span class="line">        reusePool &#x3D; [[ViewReusePool alloc] init];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 标记所有视图为可重用状态</span><br><span class="line">    [reusePool reset];</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; reload字母索引条</span><br><span class="line">    [self reloadIndexedBar];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)reloadIndexedBar</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F; 获取字母索引条的显示内容</span><br><span class="line">    NSArray &lt;NSString *&gt; *arrayTitles &#x3D; nil;</span><br><span class="line">    if ([self.indexedDataSource respondsToSelector:@selector(indexTitlesForIndexTableView:)]) &#123;</span><br><span class="line">        arrayTitles &#x3D; [self.indexedDataSource indexTitlesForIndexTableView:self];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 判断字母索引条是否为空</span><br><span class="line">    if (!arrayTitles || arrayTitles.count &lt;&#x3D; 0) &#123;</span><br><span class="line">        [containerView setHidden:YES];</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    NSUInteger count &#x3D; arrayTitles.count;</span><br><span class="line">    CGFloat buttonWidth &#x3D; 60;</span><br><span class="line">    CGFloat buttonHeight &#x3D; self.frame.size.height &#x2F; count;</span><br><span class="line">    </span><br><span class="line">    for (int i &#x3D; 0; i &lt; [arrayTitles count]; i++) &#123;</span><br><span class="line">        NSString *title &#x3D; [arrayTitles objectAtIndex:i];</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F; 从重用池当中取一个Button出来</span><br><span class="line">        UIButton *button &#x3D; (UIButton *)[reusePool dequeueReusableView];</span><br><span class="line">        &#x2F;&#x2F; 如果没有可重用的Button重新创建一个</span><br><span class="line">        if (button &#x3D;&#x3D; nil) &#123;</span><br><span class="line">            button &#x3D; [[UIButton alloc] initWithFrame:CGRectZero];</span><br><span class="line">            button.backgroundColor &#x3D; [UIColor whiteColor];</span><br><span class="line">            </span><br><span class="line">            &#x2F;&#x2F; 注册button到重用池当中</span><br><span class="line">            [reusePool addUsingView:button];</span><br><span class="line">            NSLog(@&quot;新创建一个Button&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            NSLog(@&quot;Button 重用了&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F; 添加button到父视图控件</span><br><span class="line">        [containerView addSubview:button];</span><br><span class="line">        [button setTitle:title forState:UIControlStateNormal];</span><br><span class="line">        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F; 设置button的坐标</span><br><span class="line">        [button setFrame:CGRectMake(0, i * buttonHeight, buttonWidth, buttonHeight)];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    [containerView setHidden:NO];</span><br><span class="line">    containerView.frame &#x3D; CGRectMake(self.frame.origin.x + self.frame.size.width - buttonWidth, self.frame.origin.y, buttonWidth, self.frame.size.height);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure></li>
+<li>数据源同步解决方案<ul>
+<li>并发访问,数据拷贝(因为需要拷贝操作同步,所以对内存的开销有一定的影响)</li>
+<li>串行访问:比如把主线的数据删除操作与子线程的网络请求操作,放到一个串行队列里面,等串行队列执行完之后在刷新UI(有可能删除操作会延时)<h3 id="事件传递-amp-视图响应"><a href="#事件传递-amp-视图响应" class="headerlink" title="事件传递&amp;视图响应"></a>事件传递&amp;视图响应</h3></li>
+</ul>
+</li>
+<li>View的渲染是layer操作的,layer的渲染是content,content其实就是一个backing store 的位图,最终显示在屏幕上,View为其提供内容,以及负责处理触摸等事件,参与响应链,而CALayer负责显示内容content,单一设计原则</li>
+<li>事件传递:点击屏幕-&gt;UIApplication-&gt;UIWindow-&gt;hitTest-&gt;与pointInside(查点是否在当前视图递减范围内)-&gt;SubView(倒叙遍历子视图的hitTest)-&gt;结束 (如果view透明,不可触摸,或者隐藏的话不进入hitTest,找到view之后最终谁来处理就涉及到响应链了)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;方形button指定原圆形区域有效</span><br><span class="line">- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event</span><br><span class="line">&#123;</span><br><span class="line">    if (!self.userInteractionEnabled ||</span><br><span class="line">        [self isHidden] ||</span><br><span class="line">        self.alpha &lt;&#x3D; 0.01) &#123;</span><br><span class="line">        return nil;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    if ([self pointInside:point withEvent:event]) &#123;</span><br><span class="line">        &#x2F;&#x2F;遍历当前对象的子视图</span><br><span class="line">        __block UIView *hit &#x3D; nil;</span><br><span class="line">        [self.subviews enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) &#123;</span><br><span class="line">            &#x2F;&#x2F; 坐标转换</span><br><span class="line">            CGPoint vonvertPoint &#x3D; [self convertPoint:point toView:obj];</span><br><span class="line">            &#x2F;&#x2F;调用子视图的hittest方法</span><br><span class="line">            hit &#x3D; [obj hitTest:vonvertPoint withEvent:event];</span><br><span class="line">            &#x2F;&#x2F; 如果找到了接受事件的对象，则停止遍历</span><br><span class="line">            if (hit) &#123;</span><br><span class="line">                *stop &#x3D; YES;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;];</span><br><span class="line">        </span><br><span class="line">        if (hit) &#123;</span><br><span class="line">            return hit;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            return self;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        return nil;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event</span><br><span class="line">&#123;</span><br><span class="line">    CGFloat x1 &#x3D; point.x;</span><br><span class="line">    CGFloat y1 &#x3D; point.y;</span><br><span class="line">    </span><br><span class="line">    CGFloat x2 &#x3D; self.frame.size.width &#x2F; 2;</span><br><span class="line">    CGFloat y2 &#x3D; self.frame.size.height &#x2F; 2;</span><br><span class="line">    </span><br><span class="line">    double dis &#x3D; sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));</span><br><span class="line">    &#x2F;&#x2F; 67.923</span><br><span class="line">    if (dis &lt;&#x3D; self.frame.size.width &#x2F; 2) &#123;</span><br><span class="line">        return YES;</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        return NO;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>视图响应 subView-&gt;View-&gt;UIViewConteoller(有的话)-&gt;UIWindow-&gt;Application-&gt;UIApplicationDelegate (如果没人接受,就忽略这个事件)<h3 id="图像显示原理"><a href="#图像显示原理" class="headerlink" title="图像显示原理"></a>图像显示原理</h3></li>
+<li>cpu输出位图通过总线传输GPU(图层渲染和纹理的合成,OpenGL)放在帧缓冲区中,通过视频控制器通过Vync信号提取帧,最终显示</li>
+<li>CPU(Layout DIsplay绘制(drawrec) prepare(图片解码) commit提交)</li>
+<li>GPU(顶底着色 图元装配 光栅化 片段着色 片段处理)<h3 id="卡顿-amp-掉帧"><a href="#卡顿-amp-掉帧" class="headerlink" title="卡顿&amp;掉帧"></a>卡顿&amp;掉帧</h3></li>
+<li>原因:Vsyn 信号是1/60s 提取一帧 如果cpu(时间多点)与gpu没有处理完成的下一帧就会出现掉帧</li>
+<li>滑动优化方案:CPU中子线程(处理对象操作,预排版(布局),预渲染(文本绘制,图片解码)) GPU中(纹理渲染(离屏渲染),视图混合(视图不要太多层))<h3 id="绘制原理-amp-异步绘制"><a href="#绘制原理-amp-异步绘制" class="headerlink" title="绘制原理&amp;异步绘制"></a>绘制原理&amp;异步绘制</h3></li>
+<li>setNeedsDisplay(没有立即渲染),只是给layer打上setNeedsDisplay标记,会在当前runloop将要结束的时候才会调用layer的display</li>
+<li>系统的绘制:layer创建一个backing store 然后查看有没有代理,有的话就调用我们的[UIView drawRect:]最后上传到GPU</li>
+<li>异步绘制:setNeedsDisplay时 实现displayLayer方法,开一个全局的队列去生成位图赋值给layer的content最后在会到主线程提交渲染<h3 id="离屏渲染"><a href="#离屏渲染" class="headerlink" title="离屏渲染"></a>离屏渲染</h3></li>
+<li>GPU在当前屏幕缓冲区外再开辟一个缓冲区来进行渲染操作</li>
+<li>圆角,图层蒙版,阴影,光栅化</li>
+<li>创建新的缓冲区开销,上下文切换</li>
+</ul>
+<h2 id="OC的相关特性"><a href="#OC的相关特性" class="headerlink" title="OC的相关特性"></a>OC的相关特性</h2><h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><ul>
+<li>做什么:声明私有方法 分解类文件(功能区分) 把framework的私有方法公开化</li>
+<li>特点:运行时决议,可以为系统类添加分类</li>
+<li>实例方法 类方法 协议 属性(只是实现getset方法,实例变量通过关联)</li>
+<li>分类的结构体<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">struct category_t &#123;</span><br><span class="line">    const char *name; &#x2F;&#x2F; 类名</span><br><span class="line">    classref_t cls; &#x2F;&#x2F; 分类所属的类</span><br><span class="line">    struct method_list_t *instanceMethods; &#x2F;&#x2F; 实例方法列表</span><br><span class="line">    struct method_list_t *classMethods; &#x2F;&#x2F; 类方法列表</span><br><span class="line">    struct protocol_list_t *protocols; &#x2F;&#x2F; 遵循的协议列表</span><br><span class="line">    struct property_list_t *instanceProperties; &#x2F;&#x2F; 属性列表</span><br><span class="line">    &#x2F;&#x2F; 如果是元类,就返回类方法列表;否则返回实例方法列表</span><br><span class="line">    method_list_t *methodsForMeta(bool isMeta) &#123;</span><br><span class="line">        if (isMeta) &#123;</span><br><span class="line">            return classMethods;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return instanceMethods;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F; 如果是元类,就返回 nil,因为元类没有属性;否则返回实例属性列表,但是...实例属性</span><br><span class="line">    property_list_t *propertiesForMeta(bool isMeta) &#123;</span><br><span class="line">        if (isMeta) &#123;</span><br><span class="line">            return nil; &#x2F;&#x2F; classProperties;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return instanceProperties;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;; </span><br></pre></td></tr></table></figure></li>
+<li>加载掉用栈 remethodizeClass(把所属的分类拼接到所属类上列表上,里面是一个二维数组,来添加分类的列表),列表通过倒叙遍历,最新访问最后编译的类,相同的分类名字会引起变异报错<h3 id="关联对象"><a href="#关联对象" class="headerlink" title="关联对象"></a>关联对象</h3></li>
+<li>关联对象是由AssociateHashMap存储的,所有对象的关联内容都在同一个全局的容器中</li>
+<li>key:ObjAssociation(copy,retain策略 value)-&gt;指针:ObjAssociationMap -&gt; AssociateHashMap<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;0x8888888888&quot;:&#123;</span><br><span class="line">        &quot;@selector(text)&quot;:&#123;</span><br><span class="line">            &quot;value&quot;:&quot;hello&quot;,</span><br><span class="line">            &quot;policy&quot;:&quot;retain&#x2F;copy&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2></li>
+<li>做什么:私有属性,私有方法,私有成员变量</li>
+<li>与分类的区别:编译时决议,只有声明的方式形式存在,多数寄生在.m文件,不能为系统添加扩展</li>
+</ul>
+<h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><ul>
+<li>一对一的传递方式</li>
+<li>一般声明weak以规避循环引用</li>
+<li>代理模式实现</li>
+</ul>
+<h2 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h2><ul>
+<li>使用观察者模式来现实的跨层传递消息</li>
+<li>一对多</li>
+<li>发送者发给通知中心(单例)广播给其他的接受者</li>
+<li>如何实现:有一个Notifivation_Map表(key(通知名称):观察者列表(observer、SEL))</li>
+</ul>
+<h2 id="KVO"><a href="#KVO" class="headerlink" title="KVO"></a>KVO</h2><ul>
+<li>键值观察者模式</li>
+<li>使用isa-swizzing实现 系统会动态创建一个KVO_classname的类来重新Setter方法(调用willchangvalueforkey与didiChangValueForKey),来指向原来class的isa指针</li>
+<li>成员变量使用手动添加调用willchangvalueforkey与didiChangValueForKey<h2 id="KVC"><a href="#KVC" class="headerlink" title="KVC"></a>KVC</h2></li>
+<li>+(BOOL)accessInstance.. 返回NO 不会调用成员变量只能调setKey</li>
+<li> getKey _key _isKey key isKey 如果找不到会抛异常闪退</li>
+</ul>
+<h2 id="属性关键字"><a href="#属性关键字" class="headerlink" title="属性关键字"></a>属性关键字</h2><ul>
+<li>atomic/nonatomic 对成员属性的赋值和获取时线程安全的(atomic),但是进行操作不是线程安全的</li>
+<li>retain</li>
+<li>strong</li>
+<li>assign/unsafe_unretain</li>
+<li>weak 不改变引用计数 释放后自动变成nil,可以修饰对象</li>
+<li>assign 会产生悬垂指针,修饰基本数据类型,不改变引用计数</li>
+<li>copy 浅拷贝 指向同一块指针,引用计数+1 深拷贝 开辟新的内存空间 引用计数不加1</li>
+<li>可变对象 copy 不可变(深) mutablecopy 可变(深)</li>
+<li>不可变对象 copy 不可变(浅) mutablecopy 可变 (深)</li>
+</ul>
+<h2 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h2><h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><ul>
+<li>id = objc_object<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">struct objc_object &#123;</span><br><span class="line">    Class _Nonnull isa  OBJC_ISA_AVAILABILITY;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li>Class = objc_class<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">struct objc_class : objc_object &#123;</span><br><span class="line">    &#x2F;&#x2F; Class ISA;  &#x2F;&#x2F;对象实例的isa指向Class(类对象),Class又指向MetaClass(元类对象)</span><br><span class="line">    Class superclass;</span><br><span class="line">    cache_t cache;  &#x2F;&#x2F;cache 快速查找方法执行函数,可增量扩展的哈希表结构(key:IMP(函数指针))</span><br><span class="line">    &#x2F;&#x2F; 对class_rw_t 的封装 代表了对类的相关读写信息(分类的方法,属性,协议等等)</span><br><span class="line">    &#x2F;&#x2F; objc_ivar_list methodLists protocols &#x2F;对class_rot的封装 name </span><br><span class="line">    class_data_bits_t bits; </span><br><span class="line"></span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">&#x3D;&#x3D;&gt;</span><br><span class="line">struct objc_class &#123;</span><br><span class="line">    Class _Nonnull isa  OBJC_ISA_AVAILABILITY;</span><br><span class="line"></span><br><span class="line">#if !__OBJC2__</span><br><span class="line">    Class _Nullable super_class                              OBJC2_UNAVAILABLE;</span><br><span class="line">    const char * _Nonnull name                               OBJC2_UNAVAILABLE;</span><br><span class="line">    long version                                             OBJC2_UNAVAILABLE;</span><br><span class="line">    long info                                                OBJC2_UNAVAILABLE;</span><br><span class="line">    long instance_size                                       OBJC2_UNAVAILABLE;</span><br><span class="line">    struct objc_ivar_list * _Nullable ivars                  OBJC2_UNAVAILABLE;</span><br><span class="line">    struct objc_method_list * _Nullable * _Nullable methodLists                    OBJC2_UNAVAILABLE;</span><br><span class="line">    struct objc_cache * _Nonnull cache                       OBJC2_UNAVAILABLE;</span><br><span class="line">    struct objc_protocol_list * _Nullable protocols          OBJC2_UNAVAILABLE;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
+<li>method (SEL name;(名称) + const chart*types;(返回值和参数)  IMP imp;(函数体) )</li>
+<li>Type Encodings -(void)method的chart*types(返回值,参数1,参数2 …. 参数n) == v(void)@(id):(SEL)<h3 id="类对象与元类对象"><a href="#类对象与元类对象" class="headerlink" title="类对象与元类对象"></a>类对象与元类对象</h3></li>
+<li>类对象存储实例方法列表 元类对象存储类方法列表</li>
+<li>实例可以通过isa指针找到类对象,类对象游可以通过isa指针知道元类对象,元类对象的isa指针指向根元元类对象,元类对象的superclass指针会指向类对象的Root(也就是说找不到某个类方法时候,如果实例列表有相同方法名的方法会调用)<h3 id="消息传递"><a href="#消息传递" class="headerlink" title="消息传递"></a>消息传递</h3></li>
+<li>objc_msgSend(void/<em>id self;SEL op…</em>/)  [objc test] =&gt; objc_msgSend(objc,@)<h3 id="方法缓存"><a href="#方法缓存" class="headerlink" title="方法缓存"></a>方法缓存</h3></li>
+<li>cache 快速查找方法执行函数,可增量扩展的哈希表结构(key:IMP(函数指针))<h3 id="消息转发"><a href="#消息转发" class="headerlink" title="消息转发"></a>消息转发</h3></li>
+<li>resolveInstanceMethod 是否需要消息转发</li>
+<li>forwardingTargetForSelector 给转发目标</li>
+<li>methodSignatureForSelector 返回方法签名</li>
+<li>forwardInvocation<h3 id="swizzing"><a href="#swizzing" class="headerlink" title="swizzing"></a>swizzing</h3><h3 id="动态添加方法"><a href="#动态添加方法" class="headerlink" title="动态添加方法"></a>动态添加方法</h3></li>
+<li> class_addMethod(self, @selector(test), testIMP, “v@:”);<h3 id="动态方法解析"><a href="#动态方法解析" class="headerlink" title="动态方法解析"></a>动态方法解析</h3></li>
+<li>不需要编译器在编译的时候生成getsetff,在运行时生成 (动态运行时语言将函数决议推迟到运行时)</li>
+<li>@dynamic与@synthesize的区别,@property有两个对应的词，一个是@synthesize，一个是@dynamic。如果@synthesize和@dynamic都没写，那么默认的就是@syntheszie var = _var;,@synthesize的语义是如果你没有手动实现setter方法和getter方法，那么编译器会自动为你加上这两个方法。,@dynamic告诉编译器,属性的setter与getter方法由用户自己实现，不自动生成。（当然对于readonly的属性只需提供getter即可）。假如一个属性被声明为@dynamic var，然后你没有提供@setter方法和@getter方法，编译的时候没问题，但是当程序运行到instance.var =someVar，由于缺setter方法会导致程序崩溃；或者当运行到 someVar = var时，由于缺getter方法同样会导致崩溃。编译时没问题，运行时才执行相应的方法，这就是所谓的动态绑定</li>
+</ul>
+<h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><h3 id="内存布局"><a href="#内存布局" class="headerlink" title="内存布局"></a>内存布局</h3><blockquote>
+<p>栈(高到低 方法调用) 堆(低到高 alloc) 未初始化 已初始化 程序代码段</p>
+</blockquote>
+<h3 id="内存管理方案"><a href="#内存管理方案" class="headerlink" title="内存管理方案"></a>内存管理方案</h3><ul>
+<li>NONPOINTER_ISA (非指针形的isa) 64位 33位指向类对象指针的地址和其他的是内存管理的操作</li>
+<li>散列表 Side Tables (本质是哈希表 key(对象指针) vlaue(Side Table)) 有64张Side Table(有自旋锁 引用计数表 弱引用表),为什么要多张表是因为效率问题,引用分离锁<h3 id="数据结构-1"><a href="#数据结构-1" class="headerlink" title="数据结构"></a>数据结构</h3></li>
+<li>自旋锁 (忙等的锁,适用轻量访问)</li>
+<li>引用计数表(哈希表 key(对象指针) vlaue(引用计数 64位 要右漂移2位))</li>
+<li>弱引用表(哈希表 key(对象指针) vlaue(wek指针数组))<h3 id="ARC-amp-MRC"><a href="#ARC-amp-MRC" class="headerlink" title="ARC&amp;MRC"></a>ARC&amp;MRC</h3></li>
+<li>MRC:手动引用计数 alloc retain release autorelease dealloc</li>
+<li>ARC:自动引用计数,LLVM和Runtime协作的结果 weak strong<h3 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h3><h3 id="弱引用"><a href="#弱引用" class="headerlink" title="弱引用"></a>弱引用</h3></li>
+</ul>
+<h3 id="自动释放池"><a href="#自动释放池" class="headerlink" title="自动释放池"></a>自动释放池</h3><ul>
+<li>实现原理:</li>
+<li>结构:以栈为结点通过双向链表的形式组合而成 是和线程一一对应的 autorelease先判断是否是栈顶不是的话就add(obj)在next位置,添加一个栈节点到链表上.</li>
+<li>在每一次runloop要结束的时候release(AutolreasePoolPage:pop)</li>
+<li>AutolreasePoolPage (id* next(栈的下一个位置空位置) ,前后指针,thread) AutolreasePoolPage:push(把next置nil,(就是一个autorelasepoo的代码块) 然后指向下一个) AutolreasePoolPage:pop(出栈) 拿到添加的对象依次fasongrelease消息</li>
+<li>autoreleasepool可以嵌套就是多次插入next对象<h3 id="循环引用"><a href="#循环引用" class="headerlink" title="循环引用"></a>循环引用</h3></li>
+<li>自循环 (一个对象)</li>
+<li>相互循环 (2个对象)</li>
+<li>多循环 (多个循环)</li>
+<li>避免,在适当的时候断环</li>
+<li>代理,block,NSTimer(Runloop-&gt;NSTimer(相互循环)对象-&gt;VC,如果定时器是一次时候的话就可以在定时器的回调中调用time的invalid,然后把timer=nil,如果是多次的话可以加入中间变量对对象和nstimer进行弱引用 Runloop-&gt;NSTimer 强-&gt; &lt;-弱中间对象-弱-&gt;对象-&gt;VC)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">@interface TimerWeakObject : NSObject</span><br><span class="line">@property (nonatomic, weak) id target; &#x2F;&#x2F;主要</span><br><span class="line">@property (nonatomic, assign) SEL selector;</span><br><span class="line">@property (nonatomic, weak) NSTimer *timer;&#x2F;&#x2F;主要</span><br><span class="line"></span><br><span class="line">- (void)fire:(NSTimer *)timer;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation TimerWeakObject</span><br><span class="line"></span><br><span class="line">- (void)fire:(NSTimer *)timer</span><br><span class="line">&#123;</span><br><span class="line">    if (self.target) &#123;</span><br><span class="line">        if ([self.target respondsToSelector:self.selector]) &#123;</span><br><span class="line">            [self.target performSelector:self.selector withObject:timer.userInfo];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        [self.timer invalidate];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation NSTimer (WeakTimer)</span><br><span class="line"></span><br><span class="line">+ (NSTimer *)scheduledWeakTimerWithTimeInterval:(NSTimeInterval)interval</span><br><span class="line">                                         target:(id)aTarget</span><br><span class="line">                                       selector:(SEL)aSelector</span><br><span class="line">                                       userInfo:(id)userInfo</span><br><span class="line">                                        repeats:(BOOL)repeats</span><br><span class="line">&#123;</span><br><span class="line">    TimerWeakObject *object &#x3D; [[TimerWeakObject alloc] init];</span><br><span class="line">    object.target &#x3D; aTarget;</span><br><span class="line">    object.selector &#x3D; aSelector;</span><br><span class="line">    object.timer &#x3D; [NSTimer scheduledTimerWithTimeInterval:interval target:object selector:@selector(fire:) userInfo:userInfo repeats:repeats];</span><br><span class="line">    </span><br><span class="line">    return object.timer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="block"><a href="#block" class="headerlink" title="block"></a>block</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><blockquote>
+<p>将函数及其执行上下文封装起来的对象<br>int(^block)(int) = ^int(int num){};<br>block调用就是函数的调用</p>
+</blockquote>
+<h3 id="截获变量"><a href="#截获变量" class="headerlink" title="截获变量"></a>截获变量</h3></li>
+<li>基本类型局部变量 (截获其值)</li>
+<li>对象类型局部变量 (连同所有权修饰符一起截获)</li>
+<li>静态局部 (指针形式对其截获)</li>
+<li>全局 (不进行截获)</li>
+<li>静态全局(不进行截获)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 全局变量</span><br><span class="line">int global_var &#x3D; 4;</span><br><span class="line">&#x2F;&#x2F; 静态全局变量</span><br><span class="line">static int static_global_var &#x3D; 5;</span><br><span class="line"></span><br><span class="line">- (void)method</span><br><span class="line">&#123;</span><br><span class="line">    static int multiplier &#x3D; 6;</span><br><span class="line">    &#x2F;&#x2F; int multiplier &#x3D; 6;</span><br><span class="line">    &#x2F;&#x2F;__block int multiplier &#x3D; 6;</span><br><span class="line">    int(^Block)(int) &#x3D; ^int(int num)</span><br><span class="line">    &#123;</span><br><span class="line">        return num * multiplier;</span><br><span class="line">    &#125;;</span><br><span class="line">    multiplier &#x3D; 4;</span><br><span class="line">    NSLog(@&quot;result is %d&quot;, Block(2)); &#x2F;&#x2F; multiplier 定义是static 是 8 不是是static 就是12 是__block 就是8</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="block-1"><a href="#block-1" class="headerlink" title="__block"></a>__block</h3></li>
+<li>对被截获变量进行赋值(不是调用)需要添加__block</li>
+<li>只有基本类型局部变量和象类型局部变量 才需要添加__block</li>
+<li>__block修饰的对象变成是会对象,栈上的__forwarding指针是指向__block变量的<h3 id="block的内存管理"><a href="#block的内存管理" class="headerlink" title="block的内存管理"></a>block的内存管理</h3></li>
+<li>有三种block,全局,栈,堆上的block</li>
+<li>栈上block进行copy的话就放到堆上,栈上的__forwarding指针是指向堆上的__block变量的,堆上的还是指向自身的__block变量,作用域结束之后,栈上的会销毁,而堆上的还会存在<h3 id="block的循环引用"><a href="#block的循环引用" class="headerlink" title="block的循环引用"></a>block的循环引用</h3></li>
+<li>__weak 可以避免是因为对象类型局部变量 (连同所有权修饰符一起截获)</li>
+</ul>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><h3 id="GCD"><a href="#GCD" class="headerlink" title="GCD"></a>GCD</h3><ul>
+<li>主队列：专门负责调度主线程度的任务，没有办法开辟新的线程</li>
+<li>全局队列：本质是一个并发队列，由系统提供，方便编程，可以不用创建就直接使用</li>
+<li>同步都是在当前线程执行</li>
+<li>同步/异步和串行/并发<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#x2F;&#x2F;主队列的同步 &#x3D;&gt;导致主队列的引起的线程等待(死锁) </span><br><span class="line">&#x2F;&#x2F;主队列最后都会在主线程执行,viewDidLoad先到主线程执行,block等待,但是viewDidLoad又调用block,而block在等待viewDidLoad执行完毕,从而导致互相等待.</span><br><span class="line">-(void)viewDidLoad&#123;</span><br><span class="line">    dispatch_sync(dispatch_get_main_queue(),^&#123;</span><br><span class="line">        [self doSonmthing];</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;同步串行</span><br><span class="line">&#x2F;&#x2F;因为队列不同,不必相互等待,从而不会导致相互等待</span><br><span class="line">-(void)viewDidLoad&#123;</span><br><span class="line">    dispatch_sync(serialQueue(),^&#123;</span><br><span class="line">        [self doSonmthing];</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;同步并发</span><br><span class="line">-(void)viewDidLoad&#123;</span><br><span class="line">    NSLog(@&quot;1&quot;);</span><br><span class="line">    dispatch_sync(global_queue(),^&#123;</span><br><span class="line">        dispatch_sync(global_queue(),^&#123;</span><br><span class="line">            NSLog(@&quot;1&quot;);</span><br><span class="line">            dispatch_sync(global_queue(),^&#123;</span><br><span class="line">                NSLog(@&quot;3&quot;);</span><br><span class="line">            &#125;);</span><br><span class="line">            NSLog(@&quot;4&quot;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    NSLog(@&quot;5&quot;);</span><br><span class="line">    &#x2F;&#x2F;因为是同步的,都会在当前线程执行,而并发队列又不需要等待,所以数次12345</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;异步串行</span><br><span class="line">-(void)viewDidLoad&#123;</span><br><span class="line">    dispatch_async(dispatch_get_main_queue(),^&#123;</span><br><span class="line">        [self doSonmthing];</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;异步并发</span><br><span class="line">-(void)viewDidLoad&#123;</span><br><span class="line">    dispatch_async(global_queue(),^&#123;</span><br><span class="line">        [self doSonmthing];</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>异步栅栏<blockquote>
+<p>在进程管理中起到一个栅栏的作用,它等待所有位于barrier函数之前的操作执行完毕后执行,并且在barrier函数执行之后,barrier函数之后的操作才会得到执行</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;实现多度单写 dispatch_barrier_async</span><br><span class="line">- (id)objectForKey:(NSString *)key</span><br><span class="line">&#123;</span><br><span class="line">    __block id obj;</span><br><span class="line">    &#x2F;&#x2F; 同步读取指定数据</span><br><span class="line">    dispatch_sync(concurrent_queue, ^&#123;</span><br><span class="line">        obj &#x3D; [userCenterDic objectForKey:key];</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    return obj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)setObject:(id)obj forKey:(NSString *)key</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F; 异步栅栏调用设置数据 会等待之前的完成才执行</span><br><span class="line">    dispatch_barrier_async(concurrent_queue, ^&#123;</span><br><span class="line">        [userCenterDic setObject:obj forKey:key];</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>组<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">dispatch_group_t group &#x3D; dispatch_group_create();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; for循环遍历各个元素执行操作</span><br><span class="line">for (NSURL *url in arrayURLs) &#123;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 异步组分派到并发队列当中</span><br><span class="line">    dispatch_group_async(group, concurrent_queue, ^&#123;</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F;根据url去下载图片</span><br><span class="line">        </span><br><span class="line">        NSLog(@&quot;url is %@&quot;, url);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dispatch_group_notify(group, dispatch_get_main_queue(), ^&#123;</span><br><span class="line">    &#x2F;&#x2F; 当添加到组中的所有任务执行完成之后会调用该Block</span><br><span class="line">    NSLog(@&quot;所有图片已全部下载完成&quot;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="NSOPeration"><a href="#NSOPeration" class="headerlink" title="NSOPeration"></a>NSOPeration</h3></li>
+<li>NSOperation是苹果GCD、面向对象的封装 需要结合NSOPerationQueue来配合实现</li>
+<li>特点: 添加移除依赖,执行状态的操作(任务准备,执行,完成,取消),最大并发量的控制</li>
+<li>状态控制(重写mian方法(系统控制)和start方法(自己控制)) </li>
+<li>KVO:operation 的状态是满足KVO的，可以被监听，可以被监听的<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br></pre></td><td class="code"><pre><span class="line">- (void)operationTest &#123;</span><br><span class="line">    NSOperationQueue *operationQueue&#x3D;[[NSOperationQueue alloc]init];</span><br><span class="line">    </span><br><span class="line">    NSBlockOperation * blockOperation1 &#x3D; [NSBlockOperation blockOperationWithBlock:^&#123;</span><br><span class="line">        NSLog(@&quot;进入操作1&quot;);</span><br><span class="line">        sleep(3);</span><br><span class="line">        NSLog(@&quot;操作1完成&quot;);</span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">    NSBlockOperation * blockOperation2 &#x3D; [NSBlockOperation blockOperationWithBlock:^&#123;</span><br><span class="line">        NSLog(@&quot;进入依赖操作&quot;);</span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">    [blockOperation2 addDependency:blockOperation1];</span><br><span class="line">    </span><br><span class="line">    [operationQueue addOperation:blockOperation1];</span><br><span class="line">    [operationQueue addOperation:blockOperation2];</span><br><span class="line">    </span><br><span class="line">    [blockOperation1 addExecutionBlock:^&#123;</span><br><span class="line">        NSLog(@&quot;进入追加操作&quot;);</span><br><span class="line">        sleep(5);</span><br><span class="line">        NSLog(@&quot;追加操作完成&quot;);</span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;</span><br><span class="line">#import &lt;Foundation&#x2F;Foundation.h&gt;</span><br><span class="line"></span><br><span class="line">typedef void(^completeHanderBlock)(NSURLResponse *response, NSData *data, NSError *connectionError);</span><br><span class="line"></span><br><span class="line">@interface ImageDownloadOperation : NSOperation</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> *  图片地址</span><br><span class="line"> *&#x2F;</span><br><span class="line">@property (nonatomic, copy) NSString *imageUrl;</span><br><span class="line"></span><br><span class="line">@property (nonatomic, copy)  completeHanderBlock  completeBlock;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> *  下载图片的网路请求类</span><br><span class="line"> *</span><br><span class="line"> *  @param url           下载的网址</span><br><span class="line"> *  @param downloadBlock 回调</span><br><span class="line"> *  @return 实例</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">+ (instancetype)operationWithImageUrl:(NSString *)url</span><br><span class="line">                              completeHander:(completeHanderBlock)downloadBlock;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#import &quot;ImageDownloadOperation.h&quot;</span><br><span class="line">#import &quot;NSString+FileString.h&quot;</span><br><span class="line"></span><br><span class="line">#define WEAKSELF typeof(self) __weak weakSelf &#x3D; self;</span><br><span class="line">#define STRONGSELF  typeof(self) __strong strongSelf &#x3D; self;</span><br><span class="line">#define STRONGTOWEAK  typeof(self) __strong weakSelfToStrong &#x3D; weakSelf;</span><br><span class="line"></span><br><span class="line">@interface ImageDownloadOperation ()&#123;</span><br><span class="line">    BOOL        executing;</span><br><span class="line">    BOOL        finished;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@property (nonatomic, copy) NSString  *md5String;</span><br><span class="line">@property (nonatomic, copy) NSString  *filePathString;</span><br><span class="line"></span><br><span class="line">- (void)completeOperation;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation ImageDownloadOperation</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ (instancetype)operationWithImageUrl:(NSString *)url</span><br><span class="line">                       completeHander:(completeHanderBlock)downloadBlock&#123;</span><br><span class="line">    ImageDownloadOperation *operation &#x3D; [[ImageDownloadOperation alloc] init];</span><br><span class="line">    operation.imageUrl    &#x3D; url;</span><br><span class="line">    operation.completeBlock &#x3D; downloadBlock;</span><br><span class="line">    return operation;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (id)init &#123;</span><br><span class="line">    self &#x3D; [super init];</span><br><span class="line">    if (self) &#123;</span><br><span class="line">        executing &#x3D; NO;</span><br><span class="line">        finished &#x3D; NO;</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (BOOL)isConcurrent &#123;</span><br><span class="line">    return YES;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (BOOL)isExecuting &#123;</span><br><span class="line">    return executing;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (BOOL)isFinished &#123;</span><br><span class="line">    return finished;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- (void)main &#123;</span><br><span class="line">    if (_imageUrl.length &lt;&#x3D; 0) &#123;</span><br><span class="line">        </span><br><span class="line">        [self completeOperation];</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 生成文件路径</span><br><span class="line">    self.md5String      &#x3D; [NSString MD5HashWithString:_imageUrl];</span><br><span class="line">    self.filePathString &#x3D; [NSString pathWithFileName:self.md5String];</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 文件如果存在则直接读取</span><br><span class="line">    BOOL exist &#x3D; [[NSFileManager defaultManager] fileExistsAtPath:self.filePathString isDirectory:nil];</span><br><span class="line">    if (exist) &#123;</span><br><span class="line">        NSData *data &#x3D;   [NSData dataWithContentsOfFile:self.filePathString];</span><br><span class="line">        self.completeBlock(nil,data,nil);</span><br><span class="line">        [self completeOperation];</span><br><span class="line">        </span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    NSURL *url &#x3D; [NSURL URLWithString:self.imageUrl];</span><br><span class="line">    </span><br><span class="line">    NSURLRequest *request &#x3D; [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30];</span><br><span class="line">    </span><br><span class="line">    NSURLSession *sharedSession &#x3D; [NSURLSession sharedSession];</span><br><span class="line">    WEAKSELF</span><br><span class="line">    NSURLSessionDataTask *dataTask &#x3D; [sharedSession dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) &#123;</span><br><span class="line">        STRONGTOWEAK</span><br><span class="line">        NSLog(@&quot;%@&quot;,[NSThread currentThread]);</span><br><span class="line">        if (data &amp;&amp; (error &#x3D;&#x3D; nil)) &#123;</span><br><span class="line">            NSLog(@&quot;data&#x3D;%@&quot;,[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);</span><br><span class="line">             [weakSelfToStrong writeData:data toPath:weakSelfToStrong.filePathString];</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            NSLog(@&quot;error&#x3D;%@&quot;,error);</span><br><span class="line">        &#125;</span><br><span class="line">        weakSelfToStrong.completeBlock(response,data,error);</span><br><span class="line">        [weakSelfToStrong completeOperation];</span><br><span class="line">    &#125;];</span><br><span class="line">    [dataTask resume];</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 让线程不结束</span><br><span class="line">    do &#123;</span><br><span class="line">        </span><br><span class="line">        @autoreleasepool &#123;</span><br><span class="line">            </span><br><span class="line">            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];</span><br><span class="line">            </span><br><span class="line">            if (self.isCancelled) &#123;</span><br><span class="line">                </span><br><span class="line">                [self completeOperation];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125; while (self.isExecuting &amp;&amp; self.isFinished &#x3D;&#x3D; NO);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)completeOperation &#123;</span><br><span class="line">    [self willChangeValueForKey:@&quot;isFinished&quot;];</span><br><span class="line">    [self willChangeValueForKey:@&quot;isExecuting&quot;];</span><br><span class="line">    </span><br><span class="line">    executing &#x3D; NO;</span><br><span class="line">    finished &#x3D; YES;</span><br><span class="line">    </span><br><span class="line">    [self didChangeValueForKey:@&quot;isExecuting&quot;];</span><br><span class="line">    [self didChangeValueForKey:@&quot;isFinished&quot;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)start &#123;</span><br><span class="line">    &#x2F;&#x2F; Always check for cancellation before launching the task.</span><br><span class="line">    if ([self isCancelled])&#123;</span><br><span class="line">        &#x2F;&#x2F; Must move the operation to the finished state if it is canceled.</span><br><span class="line">        [self willChangeValueForKey:@&quot;isFinished&quot;];</span><br><span class="line">        finished &#x3D; YES;</span><br><span class="line">        [self didChangeValueForKey:@&quot;isFinished&quot;];</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; If the operation is not canceled, begin executing the task.</span><br><span class="line">    [self willChangeValueForKey:@&quot;isExecuting&quot;];</span><br><span class="line">    [NSThread detachNewThreadSelector:@selector(main) toTarget:self withObject:nil];</span><br><span class="line">    executing &#x3D; YES;</span><br><span class="line">    [self didChangeValueForKey:@&quot;isExecuting&quot;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)writeData:(NSData *)data toPath:(NSString *)path &#123;</span><br><span class="line">    &#x2F;&#x2F;文件操作，需要注意两点：1: 不能同时读写。2:需要判断路径是否是唯一</span><br><span class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</span><br><span class="line">        [data writeToFile:path atomically:YES];</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#pragma mark -图片下载方法</span><br><span class="line">- (void)downloadImage&#123;</span><br><span class="line">    NSString *imageUrlStrin1 &#x3D; @&quot;http:&#x2F;&#x2F;ww2.sinaimg.cn&#x2F;mw690&#x2F;643be833gw1fba9vmlh08j21o42hc4qq.jpg&quot;;</span><br><span class="line">    NSString *imageUrlString2 &#x3D; @&quot;http:&#x2F;&#x2F;wx4.sinaimg.cn&#x2F;mw690&#x2F;68147f68ly1fbnkw2voj1j207w04y3ye.jpg&quot;;</span><br><span class="line"></span><br><span class="line">    NSOperationQueue *queue     &#x3D; [[NSOperationQueue alloc] init];</span><br><span class="line">    ImageDownloadOperation *imageDownOperation1 &#x3D; [ImageDownloadOperation operationWithImageUrl:imageUrlStrin1 completeHander:^(NSURLResponse *response, NSData *data, NSError *connectionError) &#123;</span><br><span class="line">        if (data.length&lt;&#x3D;0) &#123;</span><br><span class="line">            return ;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            self.imageView1.image &#x3D; [UIImage imageWithData:data];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">    ImageDownloadOperation *imageDownOperation2 &#x3D; [ImageDownloadOperation operationWithImageUrl:imageUrlString2 completeHander:^(NSURLResponse *response, NSData *data, NSError *connectionError) &#123;</span><br><span class="line">        if (data.length&lt;&#x3D;0) &#123;</span><br><span class="line">            return ;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            self.imageView2.image &#x3D; [UIImage imageWithData:data];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;];</span><br><span class="line">    [queue addOperation:imageDownOperation1];</span><br><span class="line">    [queue addOperation:imageDownOperation2];</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="NSThread"><a href="#NSThread" class="headerlink" title="NSThread"></a>NSThread</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;常驻线程</span><br><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line"></span><br><span class="line">    _queue &#x3D; dispatch_queue_create(&quot;com.rongcloud.sunchengxiu&quot;, DISPATCH_QUEUE_CONCURRENT);</span><br><span class="line">    _dic &#x3D; [NSMutableDictionary dictionary];</span><br><span class="line">&#x2F;&#x2F;    [self testGroup1];</span><br><span class="line">    [self testThread];</span><br><span class="line">&#125;</span><br><span class="line">- (void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event</span><br><span class="line">&#123;</span><br><span class="line">    [self performSelector:@selector(print) onThread:_thread withObject:nil waitUntilDone:NO];</span><br><span class="line">&#125;</span><br><span class="line">- (void)testThread&#123;</span><br><span class="line">    _thread&#x3D;[[NSThread alloc] initWithTarget:self selector:@selector(run) object:nil];</span><br><span class="line">    [_thread start];</span><br><span class="line">&#125;</span><br><span class="line">- (void)run&#123;</span><br><span class="line">    [[NSRunLoop currentRunLoop] addPort:[NSPort port] forMode:NSDefaultRunLoopMode];</span><br><span class="line">    [[NSRunLoop currentRunLoop]run];</span><br><span class="line">&#125;</span><br><span class="line">- (void)print&#123;</span><br><span class="line">    NSLog(@&quot;%@&quot;,[NSThread currentThread]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="多线程与锁"><a href="#多线程与锁" class="headerlink" title="多线程与锁"></a>多线程与锁</h3><ul>
+<li>@Syschronized 创建单例(保证多线程创建对象的唯一的)</li>
+<li>atomic 属性关键字 原子操作(不负责操作)</li>
+<li>OSSpinLock 自旋锁 忙等锁(循环等待,不释放的钱等待) 用于轻量级的数据方法 (比如简单的 +1/-1 操作)</li>
+<li>NSRecursiveLock 递归锁 NSLock 线程加锁<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">- (void)a&#123;</span><br><span class="line">&#x2F;&#x2F; NSLock &#x3D; lock</span><br><span class="line">    [lock lock];</span><br><span class="line">    [self b];</span><br><span class="line">    [lock unlock];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)b&#123;</span><br><span class="line">    [lock lock];</span><br><span class="line">    &#x2F;&#x2F;option</span><br><span class="line">    [lock unlock];</span><br><span class="line">&#125;</span><br><span class="line">&#x3D;&gt; 导致死锁,换成NSRecursiveLock就没问题,递归方法就用递归锁</span><br></pre></td></tr></table></figure></li>
+<li>diapatch_semaphore_t<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">crate</span><br><span class="line">wait</span><br><span class="line">signal</span><br><span class="line"></span><br><span class="line">dispatch_semaphore_t sem &#x3D; dispatch_semaphore_create(0);</span><br><span class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</span><br><span class="line">        </span><br><span class="line">        NSLog(@&quot;任务1:%@&quot;,[NSThread currentThread]);</span><br><span class="line">        dispatch_semaphore_signal(sem);</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER);</span><br><span class="line">    </span><br><span class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</span><br><span class="line">        NSLog(@&quot;任务2:%@&quot;,[NSThread currentThread]);</span><br><span class="line">        dispatch_semaphore_signal(sem);</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER);</span><br><span class="line">    </span><br><span class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</span><br><span class="line">        NSLog(@&quot;任务3:%@&quot;,[NSThread currentThread]);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="Runloop"><a href="#Runloop" class="headerlink" title="Runloop"></a>Runloop</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><blockquote>
+<p>通过内部维护的事件循环对事件/消息进行管理的一个对象,没有消息需要处理时,有消息就处理(内核态-&gt;用户态),没消息就休眠(用户态-&gt;内核态).</p>
+</blockquote>
+<h3 id="数据结构-2"><a href="#数据结构-2" class="headerlink" title="数据结构"></a>数据结构</h3></li>
+<li>NSRunLoop(对CFRunLoop的封装)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">CFRunLoop (1对多model,model一对多个source,timer,observer)</span><br><span class="line">    pthread   线程</span><br><span class="line">    currentModel CFRunLoopModel</span><br><span class="line">    models  List&lt;CFRunLoopModel&gt;</span><br><span class="line">    commonModes List&lt;NSString *&gt;</span><br><span class="line">    commonItemModes) 集合包括多个Source&#x2F;timer&#x2F;observer</span><br><span class="line"></span><br><span class="line">CFRunLoopModel</span><br><span class="line">    name &#x3D;&gt; NSDefalutRunLoopMode(通过这些string来找到某个model)</span><br><span class="line">    Sources0 </span><br><span class="line">    Sources1</span><br><span class="line">    observers</span><br><span class="line">    timers</span><br><span class="line"></span><br><span class="line">CFRunLoopSource</span><br><span class="line">    source0 手动唤醒线程</span><br><span class="line">    source1 具备唤醒线程的内里</span><br><span class="line"></span><br><span class="line">CFRunLoopTimer</span><br><span class="line"></span><br><span class="line">CFRunLoopObserver &#x2F;&#x2F;检测runloop的时间点,将要进入runloop,对timer将要进行处理,对source将要进行处理,将要进入休眠runloop,已经进入休眠runloop,退出runloop</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>Runloop的Mode<blockquote>
+<p>runlopp一次只能执行一个model,NSRunLoopCommonModels 的CommonMode不是实际存在的一个model,是同步Source/timer/observer到多个Model中的一种解决方案</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="事件循环机制"><a href="#事件循环机制" class="headerlink" title="事件循环机制"></a>事件循环机制</h3><blockquote>
+<p>将要进入runloop(发送observer)-&gt;将要处理timer和source0事件-&gt;处理source0-&gt;处理source1-&gt;将要休眠(发送observer)-&gt;休眠等待(source1,timer事件,外部手动唤醒)-&gt;唤醒(发送observer)</p>
+</blockquote>
+<h3 id="Runloop与NSTimer"><a href="#Runloop与NSTimer" class="headerlink" title="Runloop与NSTimer"></a>Runloop与NSTimer</h3><blockquote>
+<p>一个比较常见的问题：滑动tableView时，定时器还会生效吗？<br>默认情况下RunLoop运行在kCFRunLoopDefaultMode下，而当滑动tableView时，RunLoop切换到UITrackingRunLoopMode，而Timer是在kCFRunLoopDefaultMode下的，就无法接受处理Timer的事件。<br>怎么去解决这个问题呢？把Timer添加到UITrackingRunLoopMode上并不能解决问题，因为这样在默认情况下就无法接受定时器事件了。<br>所以我们需要把Timer同时添加到UITrackingRunLoopMode和kCFRunLoopDefaultMode上。<br>那么如何把timer同时添加到多个mode上呢？就要用到NSRunLoopCommonModes了</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Timer就被添加到多个mode上，这样即使RunLoop由kCFRunLoopDefaultMode切换到UITrackingRunLoopMode下，也不会影响接收Timer事件</p>
+</blockquote>
+<h3 id="Runloop与多线程"><a href="#Runloop与多线程" class="headerlink" title="Runloop与多线程"></a>Runloop与多线程</h3><ul>
+<li>一一对应</li>
+<li>默认没有开启线程<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line"></span><br><span class="line">    _queue &#x3D; dispatch_queue_create(&quot;com.rongcloud.sunchengxiu&quot;, DISPATCH_QUEUE_CONCURRENT);</span><br><span class="line">    _dic &#x3D; [NSMutableDictionary dictionary];</span><br><span class="line">&#x2F;&#x2F;    [self testGroup1];</span><br><span class="line">    [self testThread];</span><br><span class="line">&#125;</span><br><span class="line">- (void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event</span><br><span class="line">&#123;</span><br><span class="line">    [self performSelector:@selector(print) onThread:_thread withObject:nil waitUntilDone:NO];</span><br><span class="line">&#125;</span><br><span class="line">- (void)testThread&#123;</span><br><span class="line">    _thread&#x3D;[[NSThread alloc] initWithTarget:self selector:@selector(run) object:nil];</span><br><span class="line">    [_thread start];</span><br><span class="line">&#125;</span><br><span class="line">- (void)run&#123;</span><br><span class="line">    [[NSRunLoop currentRunLoop] addPort:[NSPort port] forMode:NSDefaultRunLoopMode];</span><br><span class="line">    [[NSRunLoop currentRunLoop]run];</span><br><span class="line">&#125;</span><br><span class="line">- (void)print&#123;</span><br><span class="line">    NSLog(@&quot;%@&quot;,[NSThread currentThread]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="网络请求相关知识点"><a href="#网络请求相关知识点" class="headerlink" title="网络请求相关知识点"></a>网络请求相关知识点</h2><h3 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h3><blockquote>
+<p>超文本传输协议</p>
+</blockquote>
+<ul>
+<li>请求报文<ul>
+<li>请求行 方法 URL 协议版本 </li>
+<li>请求首部字段(服务端据此获取客户端的信息,Cookie,Accept,Cache-Control,Aceept-Language,User-Agent,Content-type,Conent-Length,Connection)</li>
+<li>请求体</li>
+</ul>
+</li>
+<li>响应报文<ul>
+<li>响应行 协议版本 状态吗 短语 </li>
+<li>响应首部部字段(Cache-Control ,)</li>
+<li>响应体</li>
+</ul>
+</li>
+<li>请求方式<ul>
+<li>get (获取资源,安全(不引起服务端的任何状态改变),幂等(多次与一次执行的效果时完全相同的),可缓存的)</li>
+<li>post (处理资源,非安全,非幂等,不可缓存的)</li>
+<li>head (安全,可缓存)</li>
+<li>put</li>
+<li>delete</li>
+<li>option (安全)</li>
+</ul>
+</li>
+<li>状态码<ul>
+<li>1XX</li>
+<li>2XX</li>
+<li>3XX 网络重定向</li>
+<li>4XX 客户端有问题</li>
+<li>5XX 服务器端有问题</li>
+</ul>
+</li>
+<li>流程<ul>
+<li>三次握手建立连接</li>
+<li>http请求报文</li>
+<li>http响应报文</li>
+<li>四次挥手断开连接</li>
+</ul>
+</li>
+<li>特点<ul>
+<li>短连接</li>
+<li>无状态(Cookie/session)</li>
+</ul>
+</li>
+</ul>
+<h3 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h3><blockquote>
+<p>HTTPS = HTTP+SSL/TLS</p>
+</blockquote>
+<ul>
+<li>流程<ul>
+<li>客户端给服务端发TLS版本,支持的加密算法,randomC</li>
+<li>服务端给客户端发商定的加密算法,randomS,server证书</li>
+<li>客户端验证server证书</li>
+<li>客户端组装会话密钥(randomC + randomS + 预主密钥)</li>
+<li>客户端通过server的公钥对预主密钥进行加密传输</li>
+<li>server通过私钥解密得到预主密钥</li>
+<li>组转绘画密钥</li>
+<li>客户端发送加密握手</li>
+<li>服务端方式加密握手</li>
+<li>确认安全通道完成</li>
+</ul>
+</li>
+</ul>
+<h3 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h3><ul>
+<li><p>UDP特点:无连接(不安全,没有三次四次握手) 面向报文,发了就不管了</p>
+<h3 id="Session-Cookie"><a href="#Session-Cookie" class="headerlink" title="Session/Cookie"></a>Session/Cookie</h3></li>
+<li><p>Session</p>
+<ul>
+<li>服务端区分用户</li>
+</ul>
+</li>
+<li><p>Cookie</p>
+<ul>
+<li>对HTTP协议的无状态特点补偿</li>
+<li>Cookie,记录状态,保存在客户端</li>
+<li>Cookie存在于在首部字段</li>
+<li>保证Cookie可以加密,或者使用https</li>
+</ul>
+</li>
+</ul>
+<h2 id="第三库"><a href="#第三库" class="headerlink" title="第三库"></a>第三库</h2><h3 id="AFNetworking"><a href="#AFNetworking" class="headerlink" title="AFNetworking"></a>AFNetworking</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">会话 网络监听模块 网络安全模块</span><br><span class="line">请求系列化 响应系列化</span><br><span class="line">UIKit集成模块</span><br><span class="line"></span><br><span class="line">NSURLSession AFSecurityPolicy AFNetReachalbilityManager</span><br><span class="line">AFURLSessionMannager:AFHTTPSessionMannager</span><br><span class="line">AFURLRequestSerialzation AFURLResponseSerialzation</span><br></pre></td></tr></table></figure>
+<ul>
+<li>AFURLSessionMannager<ul>
+<li>创建管理NSURLSession,NSURLSessionTask(一个网络请求)</li>
+<li>实现NSURLSessionDelegate的代理方法(代理用key来保存,taskIdentifier)</li>
+<li>引入AFSecurityPolicy保证请求安全</li>
+<li>引入AFNetReachalbilityManager监控网络状态</li>
+</ul>
+</li>
+</ul>
+<h3 id="AsyncDisplayKit"><a href="#AsyncDisplayKit" class="headerlink" title="AsyncDisplayKit"></a>AsyncDisplayKit</h3><ul>
+<li>减少主线程的压力,能把一些能放到子线程的东西都放到子线程<ul>
+<li>Layout(文本宽高技术,视图布局计算)</li>
+<li>Rndering(文本渲染,图片编码,图像绘制)</li>
+<li>对象创建,调整,销毁</li>
+</ul>
+</li>
+<li>基本原理<ul>
+<li>ASNode-&gt; UIVIew -&gt; CALayer</li>
+<li>ASNode是在后台线程,是线程安全的</li>
+<li>ASDK也在Tunloop中注册一个observer</li>
+<li>当Runloop进行休眠前,ASDK执行该loop内提交的所有任务</li>
+</ul>
+</li>
+</ul>
+
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/07/15/iOS%E6%8F%90%E5%8D%87%E7%82%B9/" data-id="cko8q7bdo001e2eqx7bvp0fsp" class="article-share-link">
+        Share
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  <a href="/2020/03/28/CocoaPods%E5%AE%89%E8%A3%85/" class="article-nav-link">
+    <strong class="article-nav-caption">Newer</strong>
+    <div class="article-nav-title">
+      
+      CocoaPods安装
+      
+    </div>
+  </a>
+  
+  
+  <a href="/2016/07/27/EffectiveObjective-C/" class="article-nav-link">
+    <strong class="article-nav-caption">Older</strong>
+    <div class="article-nav-title">EffectiveObjective-C</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>Hank博客 &copy; 2021</li>
+      
+        <li></li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="Hank博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">相册</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/copybtn.js"></script>
+
+
+
+
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+
+</html>

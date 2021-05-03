@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="description" content="技以安身 德以立命">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    CocoaPods安装 |
+    
+    Hank博客</title>
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hank博客" type="application/atom+xml">
+</head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-CocoaPods安装" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+
+<h1 class="article-title" itemprop="name">
+  CocoaPods安装
+</h1>
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/28/CocoaPods%E5%AE%89%E8%A3%85/" class="article-date">
+  <time datetime="2020-03-28T08:28:20.000Z" itemprop="datePublished">2020-03-28</time>
+</a>
+      
+<div class="article-category">
+  <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">工具使用</a>
+</div>
+
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        
+        
+          <p>CocoaPods安装</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">一切步骤之前一定要先安装Xcode</span><br></pre></td></tr></table></figure>
+<h2 id="1-Ruby版本升级到最新"><a href="#1-Ruby版本升级到最新" class="headerlink" title="1.Ruby版本升级到最新"></a>1.Ruby版本升级到最新</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;升级Ruby环境，首先需要安装rvm</span><br><span class="line">curl -L get.rvm.io | bash -s stable </span><br><span class="line">source ~&#x2F;.bashrc</span><br><span class="line">source ~&#x2F;.bash_profile</span><br><span class="line">&#x2F;&#x2F;查看rvm版本 当前版本1.29.10</span><br><span class="line">rvm -v </span><br><span class="line">&#x2F;&#x2F;列出ruby可安装的版本信息</span><br><span class="line">rvm list known </span><br><span class="line">&#x2F;&#x2F;安装最新的rudy版本 2.7.0最新版本</span><br><span class="line">rvm install 2.7.0</span><br><span class="line">&#x2F;&#x2F;如果遇到错误有可能没安装brew </span><br><span class="line">&#x2F;usr&#x2F;bin&#x2F;ruby -e &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebrew&#x2F;install&#x2F;master&#x2F;install)&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="2-Ruby镜像改为ruby-china"><a href="#2-Ruby镜像改为ruby-china" class="headerlink" title="2.Ruby镜像改为ruby-china"></a>2.Ruby镜像改为ruby-china</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo gem update --system</span><br><span class="line">gem sources --remove https:&#x2F;&#x2F;rubygems.org&#x2F;</span><br><span class="line">gem sources --add https:&#x2F;&#x2F;gems.ruby-china.com&#x2F;</span><br><span class="line">gem sources -l</span><br></pre></td></tr></table></figure>
+<h2 id="安装pod"><a href="#安装pod" class="headerlink" title="安装pod"></a>安装pod</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install -n &#x2F;usr&#x2F;local&#x2F;bin cocoapods</span><br><span class="line">&#x2F;&#x2F;安装本地库</span><br><span class="line">pod setup</span><br><span class="line">&#x2F;&#x2F;查看版本</span><br><span class="line">pod --version</span><br></pre></td></tr></table></figure>
+
+<h2 id="CocoaPods的主要目录"><a href="#CocoaPods的主要目录" class="headerlink" title="CocoaPods的主要目录"></a>CocoaPods的主要目录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;repo目录</span><br><span class="line">~&#x2F;.cocoapods</span><br><span class="line">&#x2F;&#x2F;缓存目录</span><br><span class="line">~&#x2F;Library&#x2F;Caches&#x2F;Cocoapods</span><br></pre></td></tr></table></figure>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/03/28/CocoaPods%E5%AE%89%E8%A3%85/" data-id="cko8q7bdg00122eqx5mnv24sr" class="article-share-link">
+        Share
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  <a href="/2020/03/29/Jenkins%E9%83%A8%E7%BD%B2/" class="article-nav-link">
+    <strong class="article-nav-caption">Newer</strong>
+    <div class="article-nav-title">
+      
+      jenkins部署
+      
+    </div>
+  </a>
+  
+  
+  <a href="/2018/07/15/iOS%E6%8F%90%E5%8D%87%E7%82%B9/" class="article-nav-link">
+    <strong class="article-nav-caption">Older</strong>
+    <div class="article-nav-title">iOS提升点</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>Hank博客 &copy; 2021</li>
+      
+        <li></li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="Hank博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">相册</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/copybtn.js"></script>
+
+
+
+
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+
+</html>

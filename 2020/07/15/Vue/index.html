@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="description" content="技以安身 德以立命">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    Vue |
+    
+    Hank博客</title>
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hank博客" type="application/atom+xml">
+</head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-Vue" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+
+<h1 class="article-title" itemprop="name">
+  Vue
+</h1>
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/07/15/Vue/" class="article-date">
+  <time datetime="2020-07-15T14:18:30.000Z" itemprop="datePublished">2020-07-15</time>
+</a>
+      
+<div class="article-category">
+  <a class="article-category-link" href="/categories/Java/">Java</a>
+</div>
+
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        
+        
+          <p>Vue 简单的一些知识点</p>
+<h2 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1.下载安装包</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;bin&#x2F;node</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;bin&#x2F;npm</span><br><span class="line"></span><br><span class="line">2.安装nrm（切换源的工具）</span><br><span class="line">sudo npm install nrm -g</span><br><span class="line">&#x2F;&#x2F;切换源到taobao</span><br><span class="line">nrm use taobao</span><br></pre></td></tr></table></figure>
+<h2 id="创建工程"><a href="#创建工程" class="headerlink" title="创建工程"></a>创建工程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">empty project</span><br><span class="line">&#x2F;&#x2F;初始化</span><br><span class="line">在根目录 npm init</span><br><span class="line">&#x2F;&#x2F;安装vue</span><br><span class="line">npm install vue --save</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;vscode !tab &#x3D; 生成html</span><br></pre></td></tr></table></figure>
+
+<h2 id="vue-简单实用"><a href="#vue-简单实用" class="headerlink" title="vue 简单实用"></a>vue 简单实用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;1.具体一些属性可以上 https:&#x2F;&#x2F;www.runoob.com&#x2F;vue2&#x2F;vue-tutorial.html  查阅</span><br><span class="line">&lt;!-- </span><br><span class="line"></span><br><span class="line">    使用v-text和v-html代替&#123;&#123;&#125;&#125;</span><br><span class="line">    v-text：普通文本</span><br><span class="line">    v-html：普通文本并且被渲染</span><br><span class="line"></span><br><span class="line"> --&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;hello&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">        &lt;button v-on:click&#x3D;&quot;handleClick&quot;&gt;click&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;br&gt;</span><br><span class="line">        &lt;input type&#x3D;&quot;text&quot; v-model&#x3D;&quot;num&quot;&gt; </span><br><span class="line">        &lt;button @click&#x3D;&quot;num++&quot;&gt;+&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;h1&gt; &#123;&#123;name&#125;&#125;&lt;&#x2F;h1&gt;</span><br><span class="line">        &#123;&#123;num&#125;&#125;数字</span><br><span class="line"></span><br><span class="line">        &lt;!-- v-model --&gt;</span><br><span class="line">        &lt;br&gt;</span><br><span class="line">        &lt;input type &#x3D; &quot;checkbox&quot; v-model&#x3D;&quot;lesson&quot; value&#x3D;&quot;1&quot;&#x2F;&gt;1 &lt;br&gt;</span><br><span class="line">        &lt;input type &#x3D; &quot;checkbox&quot; v-model&#x3D;&quot;lesson&quot; value&#x3D;&quot;2&quot;&#x2F;&gt;2 &lt;br&gt;</span><br><span class="line">        &lt;input type &#x3D; &quot;checkbox&quot; v-model&#x3D;&quot;lesson&quot; value&#x3D;&quot;3&quot;&#x2F;&gt;3 &lt;br&gt;</span><br><span class="line">        &#123;&#123;lesson.join(&quot;,&quot;)&#125;&#125;</span><br><span class="line">        &lt;!-- v-on --&gt;</span><br><span class="line">        &lt;br&gt;</span><br><span class="line">        &lt;div style&#x3D;&quot;width: 100px;height: 100px;background-color: red;&quot; @click&#x3D;&quot;print(&#39;div&#39;)&quot;&gt;</span><br><span class="line">            &lt;!-- </span><br><span class="line">                stop 不让button 往上冒泡 </span><br><span class="line">                prevent 阻止默认事件发送</span><br><span class="line">                capture 使用事件捕获模式</span><br><span class="line">                self 只有元素自身触发事件才执行</span><br><span class="line">                once 只执行一次</span><br><span class="line">            --&gt;</span><br><span class="line">            &lt;button @click.stop&#x3D;&quot;print(&#39;button&#39;)&quot;&gt;click&lt;&#x2F;button&gt;</span><br><span class="line">            &lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.baidu.com&quot; @click.prevent.stop&#x3D;&quot;print(&#39;a&#39;)&quot;&gt;baidu.com&lt;&#x2F;a&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- v-for --&gt;</span><br><span class="line">        &lt;br&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li v-for&#x3D;&quot;u in users&quot;&gt;</span><br><span class="line">                &#123;&#123;u.name&#125;&#125;</span><br><span class="line">            &lt;&#x2F;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- v-if 事件直接写js--&gt;</span><br><span class="line">        &lt;button @click&#x3D;&quot;show &#x3D; !show&quot;&gt;switch&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;h1 v-if&#x3D;&quot;show&quot;&gt;</span><br><span class="line">            &lt;!-- 直接干掉 --&gt;</span><br><span class="line">            if show</span><br><span class="line">        &lt;&#x2F;h1&gt;</span><br><span class="line">        &lt;h1 v-show&#x3D;&quot;show&quot;&gt;</span><br><span class="line">            &lt;!-- 通过display:none--&gt;</span><br><span class="line">            show show</span><br><span class="line">        &lt;&#x2F;h1&gt;</span><br><span class="line">        &lt;br&gt;</span><br><span class="line"></span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;.&#x2F;node_modules&#x2F;vue&#x2F;dist&#x2F;vue.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    const app &#x3D; new Vue(&#123;</span><br><span class="line">        el:&quot;#app&quot;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            name: &quot;hello&quot;,</span><br><span class="line">            num: 0,</span><br><span class="line">            lesson:[],</span><br><span class="line">            users:[</span><br><span class="line">                &#123;name:&#39;1&#39;,age:21&#125;,</span><br><span class="line">                &#123;name:&#39;2&#39;,age:22&#125;,</span><br><span class="line">                &#123;name:&#39;3&#39;,age:23&#125;,</span><br><span class="line">            ],</span><br><span class="line">            show : false</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            handleClick()&#123;</span><br><span class="line">                console.log(&quot;hello&quot;);</span><br><span class="line">            &#125;,</span><br><span class="line">            print(msg)&#123;</span><br><span class="line">                console.log(msg);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        created()&#123;</span><br><span class="line">            &#x2F;&#x2F;先后天发送ajax请求，完成初始化</span><br><span class="line">            this.name &#x3D; &quot;hello&quot;;</span><br><span class="line">            this.num &#x3D; &quot;hello&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> &lt;!DOCTYPE html&gt;</span><br><span class="line"> &lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line"> &lt;head&gt;</span><br><span class="line">     &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">     &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">     &lt;title&gt;hello&lt;&#x2F;title&gt;</span><br><span class="line">     &lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;</span><br><span class="line">        div&#123;</span><br><span class="line">            width: 100px;</span><br><span class="line">            height: 100px;</span><br><span class="line">            color: darkgray;</span><br><span class="line">        &#125;</span><br><span class="line">        .red&#123;</span><br><span class="line">            background-color: red;</span><br><span class="line">        &#125;</span><br><span class="line">        .blue&#123;</span><br><span class="line">            background-color: blue;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;&#x2F;style&gt;</span><br><span class="line"> &lt;&#x2F;head&gt;</span><br><span class="line"> &lt;body&gt;</span><br><span class="line">     &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- v-bind  用于绑定不是vue的特有属性 --&gt;</span><br><span class="line">         &lt;button @click&#x3D;&quot;color&#x3D;&#39;red&#39;&quot;&gt; red &lt;&#x2F;button&gt;</span><br><span class="line">         &lt;button @click&#x3D;&quot;color&#x3D;&#39;blue&#39;&quot;&gt; blue &lt;&#x2F;button&gt;</span><br><span class="line">         &lt;div id&#x3D;&quot;box&quot; v-bind:class&#x3D;&quot;color&quot;&gt;</span><br><span class="line">            box</span><br><span class="line">         &lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">         &lt;!-- 计算属性 --&gt;</span><br><span class="line">         &lt;br&gt;</span><br><span class="line">         &lt;h1&gt;</span><br><span class="line">            f:&#123;&#123;bd&#125;&#125;</span><br><span class="line">            s:&#123;&#123;bdcount&#125;&#125;</span><br><span class="line">         &lt;&#x2F;h1&gt;</span><br><span class="line"></span><br><span class="line">         &lt;!-- watch --&gt;</span><br><span class="line">         &lt;br&gt;</span><br><span class="line">         &lt;input type&#x3D;&quot;text&quot; v-model&#x3D;&quot;num&quot; &gt;</span><br><span class="line">         &lt;h1&gt;num:&#123;&#123;num&#125;&#125;&lt;&#x2F;h1&gt;</span><br><span class="line">     &lt;&#x2F;div&gt;</span><br><span class="line"> &lt;&#x2F;body&gt;</span><br><span class="line"> &lt;script src&#x3D;&quot;.&#x2F;node_modules&#x2F;vue&#x2F;dist&#x2F;vue.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line"> &lt;script&gt;</span><br><span class="line">     const app &#x3D; new Vue(&#123;</span><br><span class="line">         el:&quot;#app&quot;,</span><br><span class="line">         data:&#123;</span><br><span class="line">            color:&quot;red&quot;,</span><br><span class="line">            bd: 0,</span><br><span class="line">            num:0</span><br><span class="line">         &#125;,</span><br><span class="line">         computed: &#123;</span><br><span class="line">             bdcount: function ()&#123;</span><br><span class="line">                return  this.bd + 1;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;,</span><br><span class="line">         watch:&#123;</span><br><span class="line">            num(o,n)&#123;</span><br><span class="line">                console.log(o+&quot; &quot;+n);</span><br><span class="line">            &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;);</span><br><span class="line"> &lt;&#x2F;script&gt;</span><br><span class="line"> &lt;&#x2F;html&gt;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> &lt;!DOCTYPE html&gt;</span><br><span class="line"> &lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line"> &lt;head&gt;</span><br><span class="line">     &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">     &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">     &lt;title&gt;hello&lt;&#x2F;title&gt;</span><br><span class="line">     &lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;</span><br><span class="line">  </span><br><span class="line">    &lt;&#x2F;style&gt;</span><br><span class="line"> &lt;&#x2F;head&gt;</span><br><span class="line"> &lt;body&gt;</span><br><span class="line">     &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">        &lt;counter&gt;&lt;&#x2F;counter&gt;</span><br><span class="line">     &lt;&#x2F;div&gt;</span><br><span class="line"> &lt;&#x2F;body&gt;</span><br><span class="line"> &lt;script src&#x3D;&quot;.&#x2F;node_modules&#x2F;vue&#x2F;dist&#x2F;vue.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line"> &lt;script&gt;</span><br><span class="line">    &#x2F;&#x2F;  定义全局组件</span><br><span class="line">    Vue.component(&quot;counter&quot;,&#123;</span><br><span class="line">        template:&quot;&lt;button @click&#x3D;&#39;count++&#39;&gt; click&#123;&#123;count&#125;&#125;&lt;&#x2F;button&gt;&quot;,</span><br><span class="line">        data()&#123;</span><br><span class="line">            return&#123;</span><br><span class="line">                count:0,</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    &#x2F;&#x2F; 局部组件</span><br><span class="line">    const counter &#x3D; &#123;</span><br><span class="line">        template:&quot;&lt;button @click&#x3D;&#39;count++&#39;&gt; click&#123;&#123;count&#125;&#125;&lt;&#x2F;button&gt;&quot;,</span><br><span class="line">        data()&#123;</span><br><span class="line">            return&#123;</span><br><span class="line">                count:0,</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">     const app &#x3D; new Vue(&#123;</span><br><span class="line">         el:&quot;#app&quot;,</span><br><span class="line">         data:&#123;</span><br><span class="line">            </span><br><span class="line">         &#125;,</span><br><span class="line">         components:&#123;</span><br><span class="line">             counter:counter</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;);</span><br><span class="line"> &lt;&#x2F;script&gt;</span><br><span class="line"> &lt;&#x2F;html&gt;</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"> &lt;!DOCTYPE html&gt;</span><br><span class="line"> &lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line"> &lt;head&gt;</span><br><span class="line">     &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">     &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">     &lt;title&gt;hello&lt;&#x2F;title&gt;</span><br><span class="line">     &lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;</span><br><span class="line">  </span><br><span class="line">    &lt;&#x2F;style&gt;</span><br><span class="line"> &lt;&#x2F;head&gt;</span><br><span class="line"> &lt;body&gt;</span><br><span class="line">     &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;h1&gt;&#123;&#123;count&#125;&#125;&lt;&#x2F;h1&gt;</span><br><span class="line">         &lt;!-- 父传子 双方对应属性通过props来对应--&gt;</span><br><span class="line">        &lt;introduce :title&#x3D;&quot;msg&quot;&gt;&lt;&#x2F;introduce&gt;</span><br><span class="line">        &lt;forc :items&#x3D;&quot;les&quot;&gt;&lt;&#x2F;forc&gt;</span><br><span class="line">        &lt;!-- 子传父 双方定义方法 通过this.$emit 来对应--&gt;</span><br><span class="line">        &lt;counter :num&#x3D;&quot;count&quot; @incr&#x3D;&quot;add&quot;&gt;&lt;&#x2F;counter&gt;</span><br><span class="line"></span><br><span class="line">     &lt;&#x2F;div&gt;</span><br><span class="line"> &lt;&#x2F;body&gt;</span><br><span class="line"> &lt;script src&#x3D;&quot;.&#x2F;node_modules&#x2F;vue&#x2F;dist&#x2F;vue.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line"> &lt;script&gt;</span><br><span class="line">    &#x2F;&#x2F; 局部组件</span><br><span class="line">    const introduce &#x3D; &#123;</span><br><span class="line">        template:&quot;&lt;h1&gt;&#123;&#123;title&#125;&#125;&lt;&#x2F;h1&gt;&quot;,</span><br><span class="line">        &#x2F;&#x2F;从父上拿</span><br><span class="line">        props:[&#39;title&#39;]</span><br><span class="line">    &#125;;   </span><br><span class="line">     const forc &#x3D; &#123;</span><br><span class="line">        template:&quot;&lt;ul&gt;&lt;li v-for&#x3D;&#39;m in items&#39;&gt;&#123;&#123;m&#125;&#125;&lt;&#x2F;li&gt;&lt;&#x2F;ul&gt;&quot;,</span><br><span class="line">        &#x2F;&#x2F;从父上拿</span><br><span class="line">        props:[&#39;items&#39;]</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     const counter&#x3D; &#123;</span><br><span class="line">        template:&quot;&lt;button @click&#x3D;&#39;handleAdd&#39;&gt; click &#123;&#123;num&#125;&#125;&lt;&#x2F;button&gt;&quot;,</span><br><span class="line">        &#x2F;&#x2F;从父上拿</span><br><span class="line">        props:[&#39;num&#39;],</span><br><span class="line">        methods:&#123;</span><br><span class="line">            handleAdd()&#123;</span><br><span class="line">                this.$emit(&#39;incr&#39;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     const app &#x3D; new Vue(&#123;</span><br><span class="line">         el:&quot;#app&quot;,</span><br><span class="line">         data:&#123;</span><br><span class="line">            msg:&quot;hello&quot;,</span><br><span class="line">            les:[&#39;1&#39;,&#39;2&#39;,&#39;3&#39;],</span><br><span class="line">            count:0</span><br><span class="line">         &#125;,</span><br><span class="line">         components:&#123;</span><br><span class="line">            introduce,</span><br><span class="line">            forc,</span><br><span class="line">            counter</span><br><span class="line">         &#125;,</span><br><span class="line">         methods:&#123;</span><br><span class="line">            add()&#123;</span><br><span class="line">                this.count++;</span><br><span class="line">            &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;);</span><br><span class="line"> &lt;&#x2F;script&gt;</span><br><span class="line"> &lt;&#x2F;html&gt;</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="vue-cli"><a href="#vue-cli" class="headerlink" title="vue-cli"></a>vue-cli</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">用于打包</span><br><span class="line"></span><br><span class="line">npm install -g vue-cli</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;Use ESLint to lint your code? 全部选no</span><br><span class="line">vue init webpack</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;运行</span><br><span class="line">npm run dev</span><br><span class="line">&#x2F;&#x2F;如果运行错误就,删除node_modules 再npm install sudo npm build </span><br></pre></td></tr></table></figure>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/07/15/Vue/" data-id="cko8q7bdh00132eqx0fzm4l4q" class="article-share-link">
+        Share
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  <a href="/2021/04/22/RunTime/" class="article-nav-link">
+    <strong class="article-nav-caption">Newer</strong>
+    <div class="article-nav-title">
+      
+      RunTime
+      
+    </div>
+  </a>
+  
+  
+  <a href="/2020/07/15/springCloud/" class="article-nav-link">
+    <strong class="article-nav-caption">Older</strong>
+    <div class="article-nav-title">springCloud</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>Hank博客 &copy; 2021</li>
+      
+        <li></li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="Hank博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">相册</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/copybtn.js"></script>
+
+
+
+
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+
+</html>

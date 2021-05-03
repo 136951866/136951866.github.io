@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="description" content="技以安身 德以立命">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    jenkins部署 |
+    
+    Hank博客</title>
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hank博客" type="application/atom+xml">
+</head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-Jenkins部署" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+
+<h1 class="article-title" itemprop="name">
+  jenkins部署
+</h1>
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/29/Jenkins%E9%83%A8%E7%BD%B2/" class="article-date">
+  <time datetime="2020-03-29T06:28:00.000Z" itemprop="datePublished">2020-03-29</time>
+</a>
+      
+<div class="article-category">
+  <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">工具使用</a>
+</div>
+
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        
+        
+          <p>jenkins部署</p>
+<h2 id="1-安装JDK"><a href="#1-安装JDK" class="headerlink" title="1.安装JDK"></a>1.安装JDK</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;至少1.8以上</span><br><span class="line">java -version</span><br><span class="line">&#x2F;&#x2F;JDK1.8下载地址</span><br><span class="line">链接: https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;16s88B4MTutnjLaDmrpZQIw 提取码: mp12</span><br><span class="line">&#x2F;&#x2F;查看是否成功,如果失败可能要配置一下.bash_profile文件</span><br></pre></td></tr></table></figure>
+<h3 id="2-安装jenkins"><a href="#2-安装jenkins" class="headerlink" title="2.安装jenkins"></a>2.安装jenkins</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;如果没有Homebrew需要先安装Homebrew</span><br><span class="line">&#x2F;usr&#x2F;bin&#x2F;ruby -e &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebrew&#x2F;install&#x2F;master&#x2F;install)&quot;</span><br><span class="line">&#x2F;&#x2F;安装jenkins</span><br><span class="line">brew install jenkins</span><br><span class="line">&#x2F;&#x2F;安装完成后，启动Jenkins</span><br><span class="line">&#x2F;&#x2F;输入密码,密码在console上或者在initialAdminPassword文件</span><br><span class="line">&#x2F;Users&#x2F;hank&#x2F;.jenkins&#x2F;secrets&#x2F;initialAdminPassword</span><br><span class="line">&#x2F;&#x2F;启动</span><br><span class="line">Jenkins</span><br><span class="line">&#x2F;&#x2F;关闭Jenkins服务:  在Jenkins服务器网址后面加上exit</span><br><span class="line">http:&#x2F;&#x2F;localhost:8080&#x2F;exit</span><br><span class="line">&#x2F;&#x2F;重启Jenkins服务:  在Jenkins服务器网址后面加上restart</span><br><span class="line">http:&#x2F;&#x2F;localhost:8080&#x2F;restart</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="3-安装插件"><a href="#3-安装插件" class="headerlink" title="3.安装插件"></a>3.安装插件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">安装默认插件即可,可能第一次安装不成功,安装完成之后获取访问权限,再重新安装</span><br><span class="line">description setter plugin 二维码显示</span><br><span class="line">Manage Jenkins - Manage Plugins - 可选插件</span><br><span class="line">gitee</span><br><span class="line">Xcode integration</span><br><span class="line">keychains and provisioning profiles Management</span><br><span class="line">CocoaPods Jenkins Integration</span><br><span class="line">build Timeout</span><br><span class="line">description setter plugin</span><br><span class="line">Email Extension Plugin</span><br><span class="line">SSH Agent Plugin</span><br><span class="line">workSpace Cleanup Plugin</span><br><span class="line">fir-Plugin &#x2F;&#x2F;只能手动下载http:&#x2F;&#x2F;7xju1s.com1.z0.glb.clouddn.com&#x2F;fir-plugin-1.9.5.hpi 文件使用高级方法上传文件</span><br><span class="line"></span><br><span class="line">upload-pgyer-plugin &#x2F;&#x2F;蒲公英</span><br><span class="line">下载完重启一下http:&#x2F;&#x2F;localhost:8080&#x2F;restart </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="配置profiles文件"><a href="#配置profiles文件" class="headerlink" title="配置profiles文件"></a>配置profiles文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">选择系统管理-&gt;点击 Keychains and Provisioning Profiles Management </span><br><span class="line"></span><br><span class="line">固定地址地址:&#x2F;Users&#x2F;Shared&#x2F;Jenkins&#x2F;Library&#x2F;MobileDevice&#x2F;ProvisioningProfiles &#x2F;&#x2F;没有就创建</span><br><span class="line">上传profiles文件</span><br><span class="line"></span><br><span class="line">地址:&#x2F;Users&#x2F;hank&#x2F;Library&#x2F;Keychains 上传System.keychain文件</span><br><span class="line"></span><br><span class="line">Code Signing Identity：打开钥匙串，右击-&gt;显示简介-&gt;复制常用名称，粘贴到下面就OK了</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加凭证-Credentials"><a href="#添加凭证-Credentials" class="headerlink" title="添加凭证 Credentials"></a>添加凭证 Credentials</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.生成公钥匙</span><br><span class="line">ssh-keygen -t rsa -C &quot;xxxxx@xxxxx.com&quot;  密钥在&#x2F;Users&#x2F;hank&#x2F;.ssh</span><br><span class="line">2.添加到gitee</span><br><span class="line">复制生成后的 ssh key，通过仓库主页 「管理」-&gt;「部署公钥管理」-&gt;「添加部署公钥」 ，添加生成的 public key 添加到仓库中。</span><br><span class="line">3.ssh -T git@gitee.com</span><br><span class="line">4.把私钥放在jenkins-Credentials的SSH中,注意选择全局</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建任务"><a href="#创建任务" class="headerlink" title="创建任务"></a>创建任务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">1.输入名称 选择Freestyle Project</span><br><span class="line">2.选源码管理-&gt;选择Git -&gt; Repository URL为项目的Git地址（SSH类型）-&gt; Credentials 选择上面创建的</span><br><span class="line">3.构建环境</span><br><span class="line">选中两项 Keychains and Code Signing Identities和Mobile Provisioning Profiles&#x2F;&#x2F;这2个需要我们之前做的操作才会显示</span><br><span class="line">4.构建脚本&#x2F;&#x2F;选择Xocde</span><br><span class="line">Target 项目名字</span><br><span class="line">Clean before build? YES</span><br><span class="line">Configuration Debug</span><br><span class="line">Xcode Schema File   项目名字</span><br><span class="line">Pack application, build and sign .ipa? 勾选</span><br><span class="line">Export method	 development</span><br><span class="line">.ipa filename pattern   HKFileTranfer-$&#123;BUILD_DATE&#125;</span><br><span class="line">Output directory    $&#123;WORKSPACE&#125;&#x2F;build</span><br><span class="line"></span><br><span class="line">Advanced Xcode build options</span><br><span class="line">Clean test reports? Yes</span><br><span class="line">Xcode Workspace File    $&#123;WORKSPACE&#125;&#x2F;项目&#x2F;项目</span><br><span class="line">Build output directory  $&#123;WORKSPACE&#125;&#x2F;build&#x2F;</span><br><span class="line"></span><br><span class="line">5.上传fir.im &#x2F;&#x2F;选择构建后操作步骤- &gt; 选择Upload to fir.im  fir.im Token为注册登录后，可以查看的API Token。</span><br><span class="line">&#x2F;&#x2F;如果选择蒲公英则 apiV2</span><br></pre></td></tr></table></figure>
+
+<h3 id="显示二维图"><a href="#显示二维图" class="headerlink" title="显示二维图"></a>显示二维图</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.点击jenkins管理 ---&gt;系统管理----&gt;全局安全配置-safe html</span><br><span class="line">2.选择 set build description</span><br><span class="line">description &lt;a href&#x3D;&quot;$&#123;appShortcutUrl&#125;&quot;&gt;&lt;img src&#x3D;&quot;$&#123;appQRCodeURL&#125;&quot; width&#x3D;&quot;118&quot; height&#x3D;&quot;118&quot;&#x2F;&gt;&lt;&#x2F;a&gt;</span><br><span class="line">3.注意set build description与apiV2的顺序</span><br></pre></td></tr></table></figure>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/03/29/Jenkins%E9%83%A8%E7%BD%B2/" data-id="cko8q7bda000x2eqx5k63b556" class="article-share-link">
+        Share
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  <a href="/2020/04/01/xcode11%E4%BF%AE%E6%94%B9%E9%A1%B9%E7%9B%AE%E5%90%8D%E7%A7%B0/" class="article-nav-link">
+    <strong class="article-nav-caption">Newer</strong>
+    <div class="article-nav-title">
+      
+      xcode11修改项目名称
+      
+    </div>
+  </a>
+  
+  
+  <a href="/2020/03/28/CocoaPods%E5%AE%89%E8%A3%85/" class="article-nav-link">
+    <strong class="article-nav-caption">Older</strong>
+    <div class="article-nav-title">CocoaPods安装</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>Hank博客 &copy; 2021</li>
+      
+        <li></li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="Hank博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">相册</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/copybtn.js"></script>
+
+
+
+
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+
+</html>

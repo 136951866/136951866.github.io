@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="description" content="技以安身 德以立命">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    RunTime |
+    
+    Hank博客</title>
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hank博客" type="application/atom+xml">
+</head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-RunTime" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+
+<h1 class="article-title" itemprop="name">
+  RunTime
+</h1>
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/04/22/RunTime/" class="article-date">
+  <time datetime="2021-04-22T01:18:30.000Z" itemprop="datePublished">2021-04-22</time>
+</a>
+      
+<div class="article-category">
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+</div>
+
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        
+        
+          <p>runtime 的部分功能解析（持续更新)</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">    1.NSObject</span><br><span class="line">        @interface NSObject &lt;NSObject&gt; &#123;</span><br><span class="line">        #pragma clang diagnostic push</span><br><span class="line">        #pragma clang diagnostic ignored &quot;-Wobjc-interface-ivars&quot;</span><br><span class="line">            Class isa  OBJC_ISA_AVAILABILITY;</span><br><span class="line">        #pragma clang diagnostic pop</span><br><span class="line">        &#125;</span><br><span class="line">    *&#x2F;</span><br><span class="line">   NSObject *obj &#x3D; [NSObject new];</span><br><span class="line">   </span><br><span class="line">   &#x2F;*</span><br><span class="line">    2.Class</span><br><span class="line">        typedef struct objc_class *Class;</span><br><span class="line">        struct objc_class &#123;</span><br><span class="line">            Class _Nonnull isa  OBJC_ISA_AVAILABILITY;</span><br><span class="line"></span><br><span class="line">        #if !__OBJC2__</span><br><span class="line">            Class _Nullable super_class                              OBJC2_UNAVAILABLE;</span><br><span class="line">            const char * _Nonnull name                               OBJC2_UNAVAILABLE;</span><br><span class="line">            long version                                             OBJC2_UNAVAILABLE;</span><br><span class="line">            long info                                                OBJC2_UNAVAILABLE;</span><br><span class="line">            long instance_size                                       OBJC2_UNAVAILABLE;</span><br><span class="line">            struct objc_ivar_list * _Nullable ivars                  OBJC2_UNAVAILABLE;</span><br><span class="line">            struct objc_method_list * _Nullable * _Nullable methodLists                    OBJC2_UNAVAILABLE;</span><br><span class="line">            struct objc_cache * _Nonnull cache                       OBJC2_UNAVAILABLE;</span><br><span class="line">            struct objc_protocol_list * _Nullable protocols          OBJC2_UNAVAILABLE;</span><br><span class="line">        #endif</span><br><span class="line"></span><br><span class="line">        &#125; OBJC2_UNAVAILABLE;</span><br><span class="line">    注:</span><br><span class="line">       元类生成类对象，类对象生成对象（对象的isa指向类对象，类对象的isa指向元类,元类的isa指向根元类，根元类的isa指向自己）</span><br><span class="line">       根元类的父类指向元类，元类的父类指向nil 类方法是存储在元类里的，所以当你调用一个类方法，会在元类里面顺着关系链去找这个方法，如图，当在NSObject元类里找不到类方法时，会转到NSObject类里去找，而NSObject类里存储的是实例方法，这意味着如果通过类方法的方式调用NSObject类里的实例方法，也是可以的。</span><br><span class="line">           [self methodForSelector:@selector(tes)];&#x2F;&#x2F;methodForSelector是NSObject的实例方法，但是NSObject的子类却可以通过类方法的方式调用</span><br><span class="line">    *&#x2F;</span><br><span class="line">   Class isa;</span><br><span class="line">   &#x2F;*</span><br><span class="line">    3.消息传递</span><br><span class="line">        [obj  init];</span><br><span class="line">        1.即开始先从cache查找</span><br><span class="line">        2.如果缓存命中，直接返回imp。如果没有命中，继续往下走，先判断类有没有加载到内存，如果没有，先加载类,在类对象的方法列表查找imp:</span><br><span class="line">        3.如果没有找到，继续在父类的缓存的方法列表中查找imp。</span><br><span class="line">        4.imp还没有找到，则尝试做一次动态方法解析：</span><br><span class="line">    *&#x2F;</span><br><span class="line">   [obj  init];</span><br><span class="line">   ((void (*)(id, SEL))(void *)objc_msgSend)((id)obj, sel_registerName(&quot;init&quot;));</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   &#x2F;*</span><br><span class="line">    4.消息转发</span><br><span class="line">       </span><br><span class="line">    *&#x2F;</span><br><span class="line">   Person * p &#x3D; [Person new];</span><br><span class="line">   NSLog(@&quot;%@&quot;,[p msgTest:@&quot;123&quot;]);</span><br><span class="line">   </span><br><span class="line">   @implementation Person</span><br><span class="line">   </span><br><span class="line">   &#x2F;*</span><br><span class="line">    SEL    代表方法的名称  Runtime期间的标识符</span><br><span class="line">    IMP    代表函数指针，即函数执行的入口</span><br><span class="line">    Method</span><br><span class="line">           struct objc_method &#123;</span><br><span class="line">               SEL method_name;</span><br><span class="line">               char *method_types;</span><br><span class="line">               IMP method_imp;</span><br><span class="line">           &#125;;</span><br><span class="line">    </span><br><span class="line">    *&#x2F;</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   &#x2F;*</span><br><span class="line">   1.动态方法解析</span><br><span class="line">       cls:要添加方法的类</span><br><span class="line">       name:选择器</span><br><span class="line">       imp:方法实现,IMP在objc.h中的定义是：typedef id (*IMP)(id, SEL, ...);该方法至少有两个参数,self(id)和_cmd(SEL)</span><br><span class="line">       types:方法,参数和返回值的描述,&quot;v@:&quot;表示返回值为void,没有参数</span><br><span class="line">   *&#x2F;</span><br><span class="line">   + (BOOL)resolveInstanceMethod:(SEL)sel&#123;</span><br><span class="line">       if (sel &#x3D;&#x3D; @selector(msgTest:))&#123;</span><br><span class="line">           &#x2F;&#x2F;进入第二步</span><br><span class="line">           return NO;</span><br><span class="line">           &#x2F;&#x2F;class_addMethod(Class _Nullable cls, SEL _Nonnull name, IMP _Nonnull imp,const char * _Nullable types)</span><br><span class="line">           &#x2F;&#x2F;return  class_addMethod([self class],sel, (IMP)reTest, &quot;@@:@&quot;);</span><br><span class="line">       &#125;</span><br><span class="line">       return [super resolveInstanceMethod:sel];</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   id reTest(id self, SEL _cmd,id a) &#123;</span><br><span class="line">       NSLog(@&quot;test---%@&quot;,a);</span><br><span class="line">       return [NSString stringWithFormat:@&quot;test2---%@&quot;,a];</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   &#x2F;*</span><br><span class="line">   2.消息重定向</span><br><span class="line">    创建一个新的类RePerson，该类包含有msgTest的实现方法。</span><br><span class="line">   *&#x2F;</span><br><span class="line">   - (id)forwardingTargetForSelector:(SEL)aSelector&#123;</span><br><span class="line">   &#x2F;&#x2F;    if (aSelector &#x3D;&#x3D; @selector(msgTest:))&#123;</span><br><span class="line">   &#x2F;&#x2F;        return  [RePerson new];</span><br><span class="line">   &#x2F;&#x2F;    &#125;</span><br><span class="line">       return [super forwardingTargetForSelector:aSelector];</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   &#x2F;*</span><br><span class="line">   3.消息转发</span><br><span class="line">    *&#x2F;</span><br><span class="line">   - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector&#123;</span><br><span class="line">       return [NSMethodSignature signatureWithObjCTypes:&quot;@@:@1&quot;];</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   - (void)forwardInvocation:(NSInvocation *)anInvocation&#123;</span><br><span class="line">       if (anInvocation.selector &#x3D;&#x3D; @selector(msgTest:))&#123;</span><br><span class="line">           [anInvocation invokeWithTarget:[RePerson new]];</span><br><span class="line">           return;</span><br><span class="line">       &#125;</span><br><span class="line">       [super forwardInvocation:anInvocation];</span><br><span class="line">   &#125;</span><br><span class="line">   @end</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   @implementation RePerson</span><br><span class="line">   </span><br><span class="line">   - (NSString *)msgTest:(NSString *)a&#123;</span><br><span class="line">       NSLog(@&quot;test---%@&quot;,a);</span><br><span class="line">       return [NSString stringWithFormat:@&quot;test2---%@&quot;,a];</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   - (NSString *)msgTest:(NSString *)a b:(NSString *)b&#123;</span><br><span class="line">       NSLog(@&quot;test---%@ %@&quot;,a,b);</span><br><span class="line">       return [NSString stringWithFormat:@&quot;test2---%@&quot;,a];</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   @end</span><br></pre></td></tr></table></figure>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/04/22/RunTime/" data-id="cko8q7bd9000w2eqxho0d1i16" class="article-share-link">
+        Share
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  <a href="/2021/07/15/springBoot/" class="article-nav-link">
+    <strong class="article-nav-caption">Newer</strong>
+    <div class="article-nav-title">
+      
+      springBoot
+      
+    </div>
+  </a>
+  
+  
+  <a href="/2020/07/15/Vue/" class="article-nav-link">
+    <strong class="article-nav-caption">Older</strong>
+    <div class="article-nav-title">Vue</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>Hank博客 &copy; 2021</li>
+      
+        <li></li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="Hank博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">相册</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/copybtn.js"></script>
+
+
+
+
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+
+</html>
